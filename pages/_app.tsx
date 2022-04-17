@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
-import myTheme from '../assets/theme';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -74,24 +73,42 @@ export default function App(props: AppProps) {
               '#020203',
               '#010101',
             ],
+            mutedText: [
+              '#F1F2F3',
+              '#D8DAE0',
+              '#C0C4D0',
+              '#A9AFC3', // Default value
+              '#979DB1',
+              '#878DA0',
+              '#7A7F90',
+              '#6F7380',
+              '#656872',
+              '#5C5E65',
+            ],
           },
           headings: {
+            fontFamily: 'Poppins, sans-serif',
             fontWeight: 'bold',
             sizes: {
               h1: {
                 fontSize: 80,
+                lineHeight: 1.31,
               },
               h2: {
                 fontSize: 70,
+                lineHeight: 1.14,
               },
               h3: {
                 fontSize: 64,
+                lineHeight: 1.03,
               },
               h4: {
                 fontSize: 50,
+                lineHeight: 1.46,
               },
               h5: {
                 fontSize: 40,
+                lineHeight: 1.5,
               },
               h6: {
                 fontSize: 28,

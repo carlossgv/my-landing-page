@@ -1,13 +1,14 @@
 import { createStyles } from '@mantine/core';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { createContext, useContext } from 'react';
+import Intro from '../components/Intro/Intro';
 import NavigationBar from '../components/NavigationBar/NavigationBar';
 import { localeCheck } from '../utils/locale-check';
 
 const useStyles = createStyles((theme) => ({
   root: {
     background: theme.colors.backgroundPrimary[4],
+    height: '100%',
   },
 }));
 
@@ -38,6 +39,7 @@ const Home: NextPage = () => {
         locale={validLocale}
         updateLocale={handleUpdateLocale}
       ></NavigationBar>
+      <Intro locale={validLocale}></Intro>
     </div>
   );
 };

@@ -6,9 +6,7 @@ import {
   Header,
   Button,
 } from '@mantine/core';
-import Router, { useRouter } from 'next/router';
-import pageData from '../../assets/page-data';
-import { localeCheck } from '../../utils/locale-check';
+import pageData from '../../utils/page-data';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -25,6 +23,8 @@ const useStyles = createStyles((theme) => ({
       flexDirection: 'column',
       rowGap: 5,
     },
+    background: theme.colors.backgroundPrimary[4],
+    border: 'none',
   },
   linksContainer: {
     display: 'flex',
