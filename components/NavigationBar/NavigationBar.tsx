@@ -9,27 +9,35 @@ import {
 import pageData from '../../utils/page-data';
 
 const useStyles = createStyles((theme) => ({
-  link: {
-    color: 'white',
-    '&:hover': {
-      textDecoration: 'none',
-    },
+  root: {
+    background: theme.colors.backgroundPrimary[4],
+    border: 'none',
   },
   header: {
     display: 'flex',
     paddingTop: 10,
     paddingBottom: 10,
+    width: '100%',
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       flexDirection: 'column',
+      alignItems: 'center',
       rowGap: 5,
     },
-    background: theme.colors.backgroundPrimary[4],
-    border: 'none',
+  },
+  borderContainer: {
+    marginLeft: 0,
+    marginRight: 0,
   },
   linksContainer: {
     display: 'flex',
     columnGap: 15,
     alignItems: 'center',
+  },
+  link: {
+    color: 'white',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
   buttonContainer: {
     display: 'flex',
@@ -51,60 +59,60 @@ const NavigationBar = ({
   const CONTACT = pageData.navigationBar.contact[locale];
 
   return (
-    <Header height={'100%'} className={classes.header}>
-      <Container>
+    <Header height={'100%'} className={classes.root}>
+      <Container className={classes.header} size="xl">
         <Title order={6}>{'<CG.DEV/>'}</Title>
-      </Container>
-      <Container className={classes.linksContainer}>
-        <Text
-          transform="uppercase"
-          className={classes.link}
-          variant="link"
-          component="a"
-          href="#"
-        >
-          {ABOUT_ME}
-        </Text>
-        <Text
-          transform="uppercase"
-          className={classes.link}
-          variant="link"
-          component="a"
-          href="#"
-        >
-          {PROJECTS}
-        </Text>
-        <Text
-          transform="uppercase"
-          className={classes.link}
-          variant="link"
-          component="a"
-          href="#"
-        >
-          {CONTACT}
-        </Text>
-      </Container>
 
-      <Container className={classes.buttonContainer}>
-        <Button
-          uppercase
-          compact
-          variant="subtle"
-          onClick={() => updateLocale('en')}
-          color="gray"
-        >
-          EN
-        </Button>
-        {''} | {''}
-        <Button
-          uppercase
-          compact
-          variant="subtle"
-          onClick={() => updateLocale('es')}
-          color="gray"
-        >
-          ES
-        </Button>
+        <Container className={classes.linksContainer}>
+          <Text
+            transform="uppercase"
+            className={classes.link}
+            variant="link"
+            component="a"
+            href="#"
+          >
+            {ABOUT_ME}
+          </Text>
+          <Text
+            transform="uppercase"
+            className={classes.link}
+            variant="link"
+            component="a"
+            href="#"
+          >
+            {PROJECTS}
+          </Text>
+          <Text
+            transform="uppercase"
+            className={classes.link}
+            variant="link"
+            component="a"
+            href="#"
+          >
+            {CONTACT}
+          </Text>
+        </Container>
+        <div className={classes.buttonContainer}>
+          <Button
+            uppercase
+            compact
+            variant="subtle"
+            onClick={() => updateLocale('en')}
+            color="gray"
+          >
+            EN
+          </Button>
+          {''} | {''}
+          <Button
+            uppercase
+            compact
+            variant="subtle"
+            onClick={() => updateLocale('es')}
+            color="gray"
+          >
+            ES
+          </Button>
+        </div>
       </Container>
     </Header>
   );

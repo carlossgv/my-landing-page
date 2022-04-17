@@ -14,6 +14,12 @@ interface PageData {
     button: {
       [key: string]: string;
     };
+    copyCode: {
+      [key: string]: string;
+    };
+    copiedCode: {
+      [key: string]: string;
+    };
   };
 }
 
@@ -44,6 +50,14 @@ const pageData: PageData = {
     button: {
       en: 'Explore',
       es: 'Explorar',
+    },
+    copyCode: {
+      en: 'Copy code to clipboard',
+      es: 'Copiar código al portapapeles',
+    },
+    copiedCode: {
+      en: 'Code copied to clipboard',
+      es: 'Código copiado al portapapeles',
     },
   },
 };

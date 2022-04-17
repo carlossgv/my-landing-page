@@ -4,7 +4,6 @@ import {
   Title,
   Button,
   ActionIcon,
-  Code,
 } from '@mantine/core';
 import pageData from '../../utils/page-data';
 import ArrowIcon from '../../public/assets/icons/down-arrow.svg';
@@ -15,11 +14,17 @@ import { Prism } from '@mantine/prism';
 const useStyles = createStyles((theme) => ({
   introRoot: {
     height: '100%',
+    width: '100%',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundImage: `url(${BackgroundImage.src})`,
+    backgroundPositionX: 'right',
+    backgroundRepeat: 'no-repeat',
     padding: '80px 0px',
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      justifyContent: 'center',
+    },
   },
   info: {
     maxWidth: 432,
@@ -50,10 +55,15 @@ const useStyles = createStyles((theme) => ({
     width: 15,
   },
 
-  codeBlock: {
-    fontSize: 16,
-    padding: '35px 35px 35px 5px',
+  rootCodeBlock: {
+    [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+      display: 'none',
+    },
+  },
 
+  codeBlock: {
+    fontSize: 20,
+    padding: '50px 50px 50px 50px',
     background:
       theme.fn.linearGradient(
         228,
@@ -61,6 +71,7 @@ const useStyles = createStyles((theme) => ({
         'rgba(25, 28, 38, 0.5)'
       ) + '!important',
     backdropFilter: 'blur(30px)',
+    borderRadius: 20,
   },
 }));
 
@@ -76,10 +87,12 @@ const Intro = ({ locale }: { locale: string }) => {
       column: "questionid",
       value: answer.answerquestion,
     })`;
+  const COPY_CODE = pageData.intro.copyCode[locale];
+  const COPIED_CODE = pageData.intro.copiedCode[locale];
 
   return (
-    <Container className={classes.introRoot}>
-      <Container className={classes.info}>
+    <Container className={classes.introRoot} size={'xl'}>
+      <div className={classes.info}>
         <p className={classes.headText}>----- SOFTWARE DEVELOPER</p>
         <Title order={2}>
           {TITLE}
@@ -96,14 +109,15 @@ const Intro = ({ locale }: { locale: string }) => {
             alt={'Arrow icon'}
           ></Image>
         </ActionIcon>
-      </Container>
+      </div>
       <Prism
         classNames={{
+          root: classes.rootCodeBlock,
           code: classes.codeBlock,
         }}
         language={'javascript'}
-        copyLabel="Copy code to clipboard"
-        copiedLabel="Code copied to clipboard"
+        copyLabel={COPY_CODE}
+        copiedLabel={COPIED_CODE}
       >
         {CODE}
       </Prism>

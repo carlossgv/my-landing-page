@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { Container, createStyles } from '@mantine/core';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Intro from '../components/Intro/Intro';
@@ -9,6 +9,7 @@ const useStyles = createStyles((theme) => ({
   root: {
     background: theme.colors.backgroundPrimary[4],
     height: '100%',
+    padding: '0 !important',
   },
 }));
 
