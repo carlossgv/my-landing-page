@@ -53,7 +53,7 @@ const NavigationBar = ({
   return (
     <Header height={'100%'} className={classes.header}>
       <Container>
-        <Title order={6}>LOGO</Title>
+        <Title order={6}>{'<CG.DEV/>'}</Title>
       </Container>
       <Container className={classes.linksContainer}>
         <Text
