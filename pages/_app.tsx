@@ -20,6 +20,33 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{
           colorScheme: 'dark',
+          fontFamily: 'Poppins, sans-serif',
+          fontSizes: {
+            md: 16,
+          },
+          headings: {
+            fontWeight: 'bold',
+            sizes: {
+              h1: {
+                fontSize: 80,
+              },
+              h2: {
+                fontSize: 70,
+              },
+              h3: {
+                fontSize: 64,
+              },
+              h4: {
+                fontSize: 50,
+              },
+              h5: {
+                fontSize: 40,
+              },
+              h6: {
+                fontSize: 28,
+              },
+            },
+          },
         }}
       >
         <Component {...pageProps} />
