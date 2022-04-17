@@ -24,6 +24,7 @@ const useStyles = createStyles((theme) => ({
     padding: '80px 0px',
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       justifyContent: 'center',
+      background: 'none',
     },
   },
   info: {
@@ -31,18 +32,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     rowGap: 10,
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      padding: 50,
-      background:
-        theme.fn.linearGradient(
-          228,
-          'rgba(25, 28, 38, 0.9)',
-          'rgba(25, 28, 38, 0.5)'
-        ) + '!important',
-      backdropFilter: 'blur(10px)',
-      borderRadius: 20,
-      width: '100vw',
-    },
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {},
   },
   headText: {
     color: theme.colors.mutedText[3],
