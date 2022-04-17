@@ -1,4 +1,14 @@
-import { Container, createStyles, Text, Title, Header } from '@mantine/core';
+import {
+  Container,
+  createStyles,
+  Text,
+  Title,
+  Header,
+  Button,
+} from '@mantine/core';
+import Router, { useRouter } from 'next/router';
+import pageData from '../../assets/page-data';
+import { localeCheck } from '../../utils/locale-check';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -11,18 +21,30 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     paddingTop: 10,
     paddingBottom: 10,
-
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       flexDirection: 'column',
     },
   },
+  mainData: {
+    display: 'flex',
+  },
 }));
 
-const NavigationBar = () => {
+const NavigationBar = ({
+  locale,
+  updateLocale,
+}: {
+  locale: string;
+  updateLocale: (locale: string) => void;
+}) => {
   const { classes } = useStyles();
 
-  const navbarContent = (
-    <>
+  const ABOUT_ME = pageData.navigationBar.aboutMe[locale];
+  const PROJECTS = pageData.navigationBar.projects[locale];
+  const CONTACT = pageData.navigationBar.contact[locale];
+
+  return (
+    <Header height={'100%'} className={classes.header}>
       <Container
         style={{
           display: 'flex',
@@ -38,22 +60,39 @@ const NavigationBar = () => {
           alignItems: 'center',
         }}
       >
-        <Text className={classes.link} variant="link" component="a" href="#">
-          ABOUT ME
+        <Text
+          transform="uppercase"
+          className={classes.link}
+          variant="link"
+          component="a"
+          href="#"
+        >
+          {ABOUT_ME}
         </Text>
-        <Text className={classes.link} variant="link" component="a" href="#">
-          PROJECTS
+        <Text
+          transform="uppercase"
+          className={classes.link}
+          variant="link"
+          component="a"
+          href="#"
+        >
+          {PROJECTS}
         </Text>
-        <Text className={classes.link} variant="link" component="a" href="#">
-          CONTACT
+        <Text
+          transform="uppercase"
+          className={classes.link}
+          variant="link"
+          component="a"
+          href="#"
+        >
+          {CONTACT}
         </Text>
       </Container>
-    </>
-  );
 
-  return (
-    <Header height={'100%'} className={classes.header}>
-      {navbarContent}
+      <Container>
+        <Button onClick={() => updateLocale('en')}>EN</Button> |{' '}
+        <Button onClick={() => updateLocale('es')}>ES</Button>
+      </Container>
     </Header>
   );
 };
