@@ -23,10 +23,17 @@ const useStyles = createStyles((theme) => ({
     paddingBottom: 10,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       flexDirection: 'column',
+      rowGap: 5,
     },
   },
-  mainData: {
+  linksContainer: {
     display: 'flex',
+    columnGap: 15,
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    display: 'flex',
+    alignItems: 'center',
   },
 }));
 
@@ -45,21 +52,10 @@ const NavigationBar = ({
 
   return (
     <Header height={'100%'} className={classes.header}>
-      <Container
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
+      <Container>
         <Title order={6}>LOGO</Title>
       </Container>
-      <Container
-        style={{
-          display: 'flex',
-          columnGap: 15,
-          alignItems: 'center',
-        }}
-      >
+      <Container className={classes.linksContainer}>
         <Text
           transform="uppercase"
           className={classes.link}
@@ -89,9 +85,26 @@ const NavigationBar = ({
         </Text>
       </Container>
 
-      <Container>
-        <Button onClick={() => updateLocale('en')}>EN</Button> |{' '}
-        <Button onClick={() => updateLocale('es')}>ES</Button>
+      <Container className={classes.buttonContainer}>
+        <Button
+          uppercase
+          compact
+          variant="subtle"
+          onClick={() => updateLocale('en')}
+          color="gray"
+        >
+          EN
+        </Button>
+        {''} | {''}
+        <Button
+          uppercase
+          compact
+          variant="subtle"
+          onClick={() => updateLocale('es')}
+          color="gray"
+        >
+          ES
+        </Button>
       </Container>
     </Header>
   );
