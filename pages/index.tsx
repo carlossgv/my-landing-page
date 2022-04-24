@@ -11,12 +11,12 @@ import { ArrowUp } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
   root: {
-    // background: theme.colors.backgroundPrimary[4],
     height: '100%',
     padding: '0 !important',
     display: 'flex',
     flexDirection: 'column',
     rowGap: 0,
+    WebkitTapHighlightColor: 'transparent',
   },
   goUpButton: {
     position: 'fixed',
