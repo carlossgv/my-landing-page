@@ -13,12 +13,14 @@ const useStyles = createStyles((theme) => ({
 
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       height: 'auto',
+      paddingTop: 80,
+      paddingBottom: 80,
     },
   },
   root: {
     background: theme.colors.backgroundSecondary[4],
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     height: '100%',
     columnGap: 30,
@@ -59,14 +61,25 @@ const PersonalInfo = () => {
   const { classes } = useStyles();
 
   const buttonsData = [
-    { icon: GithubIcon, altText: 'Github' },
-    { icon: MailIcon, altText: 'Mail' },
-    { icon: LinkedinIcon, altText: 'LinkedIn' },
+    {
+      icon: GithubIcon,
+      altText: 'Github',
+      link: 'https://github.com/carlossgv',
+    },
+    { icon: MailIcon, altText: 'Mail', link: 'mailto:carlossgv@gmail.com' },
+    {
+      icon: LinkedinIcon,
+      altText: 'LinkedIn',
+      link: 'https://www.linkedin.com/in/carlossgv/',
+    },
   ];
 
   const buttons = buttonsData.map((button, index) => {
     return (
       <ActionIcon
+        onClick={() => {
+          window.open(button.link, '_blank');
+        }}
         key={index}
         radius="xl"
         variant="filled"
@@ -87,33 +100,35 @@ const PersonalInfo = () => {
   });
 
   return (
-    <div className={classes.mainBackground}>
-      <Container size={'xl'} className={classes.root}>
-        <div className={classes.pictureDiv}>
-          <Image
-            className={classes.picture}
-            src={InfoPicture}
-            alt={'A picture of me'}
-          ></Image>
-        </div>
-        <div className={classes.info}>
-          <p className={classes.subtitle}>SOFTWARE DEVELOPER</p>
-          <Title order={1}>Carlos Gonzalez</Title>
-          <p>
-            Non ergo erunt homines deliciis diffluentes audiendi si qua ndo de
-            amicitia, quam nec usu nec ratione habent cognidis putabunt. Nam
-            quis est, pro deorum fidem atque hominuqu velit, ut neque diligat
-            quemquam nec ipse ab ullo diligat circumfluere.{' '}
-          </p>
-          <p>
-            Non ergo erunt homines deliciis diffluentes audiendi si qua ndo de
-            amicitia, quam nec usu nec ratione habent cognidis putabunt. Nam
-            quis est, pro deorum fidem.{' '}
-          </p>
-          <div className={classes.buttonContainer}>{buttons}</div>
-        </div>
-      </Container>
-    </div>
+    <a id="personal-info">
+      <div className={classes.mainBackground}>
+        <Container size={'xl'} className={classes.root}>
+          <div className={classes.pictureDiv}>
+            <Image
+              className={classes.picture}
+              src={InfoPicture}
+              alt={'A picture of me'}
+            ></Image>
+          </div>
+          <div className={classes.info}>
+            <p className={classes.subtitle}>SOFTWARE DEVELOPER</p>
+            <Title order={1}>Carlos Gonzalez</Title>
+            <p>
+              Non ergo erunt homines deliciis diffluentes audiendi si qua ndo de
+              amicitia, quam nec usu nec ratione habent cognidis putabunt. Nam
+              quis est, pro deorum fidem atque hominuqu velit, ut neque diligat
+              quemquam nec ipse ab ullo diligat circumfluere.{' '}
+            </p>
+            <p>
+              Non ergo erunt homines deliciis diffluentes audiendi si qua ndo de
+              amicitia, quam nec usu nec ratione habent cognidis putabunt. Nam
+              quis est, pro deorum fidem.{' '}
+            </p>
+            <div className={classes.buttonContainer}>{buttons}</div>
+          </div>
+        </Container>
+      </div>
+    </a>
   );
 };
 

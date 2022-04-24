@@ -23,14 +23,25 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundImage: `url(${BackgroundImage.src})`,
-    backgroundSize: '60%',
+    backgroundSize: '70%',
     backgroundPositionY: 'center',
     backgroundPositionX: 'right',
     backgroundRepeat: 'no-repeat',
+
     padding: '80px 0px',
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       justifyContent: 'center',
       background: 'none',
+    },
+
+    '&::before': {
+      backgroundColor: 'rgba(0,0,0,0.6)',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      // content: '""',
     },
   },
   info: {
@@ -38,6 +49,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     rowGap: 10,
+    zIndex: 1000,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {},
   },
   headText: {
@@ -117,16 +129,20 @@ const Intro = ({
             <span className={classes.titleDot}> .</span>
           </Title>
           <p>{DESCRIPTION}</p>
-          <Button size="lg" uppercase className={classes.button}>
-            {BUTTON_TEXT}
-          </Button>
-          <ActionIcon>
-            <Image
-              className={classes.icon}
-              src={ArrowIcon}
-              alt={'Arrow icon'}
-            ></Image>
-          </ActionIcon>
+          <a href="#personal-info">
+            <Button size="lg" uppercase className={classes.button}>
+              {BUTTON_TEXT}
+            </Button>
+          </a>
+          <a href="#personal-info">
+            <ActionIcon>
+              <Image
+                className={classes.icon}
+                src={ArrowIcon}
+                alt={'Arrow icon'}
+              ></Image>
+            </ActionIcon>
+          </a>
         </div>
         <Prism
           classNames={{
