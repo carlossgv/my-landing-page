@@ -37,10 +37,6 @@ const Home: NextPage = () => {
     setNavHeight(height);
   };
 
-  useEffect(() => {
-    smoothScrollTo('home');
-  });
-
   // Sidebar
   // Navbar
   // Intro
