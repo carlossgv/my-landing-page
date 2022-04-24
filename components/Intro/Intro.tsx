@@ -29,7 +29,6 @@ const useStyles = createStyles((theme) => ({
     backgroundPositionX: 'right',
     backgroundRepeat: 'no-repeat',
 
-    padding: '80px 0px',
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       justifyContent: 'center',
       background: 'none',
