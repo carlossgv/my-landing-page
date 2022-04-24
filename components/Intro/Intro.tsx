@@ -87,10 +87,10 @@ const useStyles = createStyles((theme) => ({
     background:
       theme.fn.linearGradient(
         228,
-        'rgba(25, 28, 38, 0.9)',
-        'rgba(25, 28, 38, 0.5)'
+        'rgba(25, 28, 38, 0.7)',
+        'rgba(25, 28, 38, 0.2)'
       ) + '!important',
-    backdropFilter: 'blur(30px)',
+    backdropFilter: 'blur(10px)',
     borderRadius: 20,
   },
 }));
