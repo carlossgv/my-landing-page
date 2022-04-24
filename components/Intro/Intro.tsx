@@ -121,7 +121,6 @@ const Intro = ({
     <div
       className={classes.mainBackground}
       style={{
-        height: `calc(100vh - ${navHeight}px)`,
         minHeight: '-webkit-fill-available',
       }}
     >
