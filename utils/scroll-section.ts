@@ -2,7 +2,7 @@ import { MouseEvent } from 'react';
 
 const smoothScrollTo = (
   hrefId: string,
-  e?: MouseEvent<HTMLAnchorElement, MouseEvent<Event, MouseEvent>>
+  e?: MouseEvent<HTMLAnchorElement, any>
 ) => {
   e?.preventDefault();
 
