@@ -10,6 +10,7 @@ import ArrowIcon from '../../public/assets/icons/down-arrow.svg';
 import BackgroundImage from '../../public/assets/images/intro-background-image.png';
 import Image from 'next/image';
 import { Prism } from '@mantine/prism';
+import InternalAnchor from '../InternalAnchor/InternalAnchor';
 
 const useStyles = createStyles((theme) => ({
   mainBackground: {
@@ -129,12 +130,13 @@ const Intro = ({
             <span className={classes.titleDot}> .</span>
           </Title>
           <p>{DESCRIPTION}</p>
-          <a href="#personal-info">
+          <InternalAnchor hrefId={'personal-info'}>
             <Button size="lg" uppercase className={classes.button}>
               {BUTTON_TEXT}
             </Button>
-          </a>
-          <a href="#personal-info">
+          </InternalAnchor>
+
+          <InternalAnchor hrefId={'personal-info'}>
             <ActionIcon>
               <Image
                 className={classes.icon}
@@ -142,7 +144,7 @@ const Intro = ({
                 alt={'Arrow icon'}
               ></Image>
             </ActionIcon>
-          </a>
+          </InternalAnchor>
         </div>
         <Prism
           classNames={{
