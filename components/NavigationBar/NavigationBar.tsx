@@ -6,6 +6,9 @@ import {
   Header,
   Button,
 } from '@mantine/core';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useRef } from 'react';
 import pageData from '../../utils/page-data';
 
 const useStyles = createStyles((theme) => ({
@@ -48,9 +51,11 @@ const useStyles = createStyles((theme) => ({
 const NavigationBar = ({
   locale,
   updateLocale,
+  navHeightHandler,
 }: {
   locale: string;
   updateLocale: (locale: string) => void;
+  navHeightHandler: (height: number) => void;
 }) => {
   const { classes } = useStyles();
 
@@ -58,8 +63,18 @@ const NavigationBar = ({
   const PROJECTS = pageData.navigationBar.projects[locale];
   const CONTACT = pageData.navigationBar.contact[locale];
 
+  const navHeightRef = useRef(null);
+
+  const handleResize = () => {
+    navHeightHandler(navHeightRef.current.offsetHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize, false);
+  }, []);
+
   return (
-    <Header height={'100%'} className={classes.root}>
+    <Header height={'100%'} className={classes.root} ref={navHeightRef}>
       <Container className={classes.header} size="xl">
         <Title order={6}>{'<CG.DEV/>'}</Title>
 

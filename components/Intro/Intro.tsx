@@ -12,6 +12,10 @@ import Image from 'next/image';
 import { Prism } from '@mantine/prism';
 
 const useStyles = createStyles((theme) => ({
+  mainBackground: {
+    width: '100%',
+    backgroundColor: theme.colors.backgroundPrimary[4],
+  },
   introRoot: {
     height: '100%',
     width: '100%',
@@ -19,6 +23,8 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundImage: `url(${BackgroundImage.src})`,
+    backgroundSize: '60%',
+    backgroundPositionY: 'center',
     backgroundPositionX: 'right',
     backgroundRepeat: 'no-repeat',
     padding: '80px 0px',
@@ -77,7 +83,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Intro = ({ locale }: { locale: string }) => {
+const Intro = ({
+  locale,
+  navHeight,
+}: {
+  locale: string;
+  navHeight: number;
+}) => {
   const { classes } = useStyles();
 
   const TITLE = pageData.intro.title[locale];
@@ -93,37 +105,42 @@ const Intro = ({ locale }: { locale: string }) => {
   const COPIED_CODE = pageData.intro.copiedCode[locale];
 
   return (
-    <Container className={classes.introRoot} size={'xl'}>
-      <div className={classes.info}>
-        <p className={classes.headText}>----- SOFTWARE DEVELOPER</p>
-        <Title order={2}>
-          {TITLE}
-          <span className={classes.titleDot}> .</span>
-        </Title>
-        <p>{DESCRIPTION}</p>
-        <Button size="lg" uppercase className={classes.button}>
-          {BUTTON_TEXT}
-        </Button>
-        <ActionIcon>
-          <Image
-            className={classes.icon}
-            src={ArrowIcon}
-            alt={'Arrow icon'}
-          ></Image>
-        </ActionIcon>
-      </div>
-      <Prism
-        classNames={{
-          root: classes.rootCodeBlock,
-          code: classes.codeBlock,
-        }}
-        language={'javascript'}
-        copyLabel={COPY_CODE}
-        copiedLabel={COPIED_CODE}
-      >
-        {CODE}
-      </Prism>
-    </Container>
+    <div
+      className={classes.mainBackground}
+      style={{ height: `calc(100vh - ${navHeight}px)` }}
+    >
+      <Container className={classes.introRoot} size={'xl'}>
+        <div className={classes.info}>
+          <p className={classes.headText}>----- SOFTWARE DEVELOPER</p>
+          <Title order={2}>
+            {TITLE}
+            <span className={classes.titleDot}> .</span>
+          </Title>
+          <p>{DESCRIPTION}</p>
+          <Button size="lg" uppercase className={classes.button}>
+            {BUTTON_TEXT}
+          </Button>
+          <ActionIcon>
+            <Image
+              className={classes.icon}
+              src={ArrowIcon}
+              alt={'Arrow icon'}
+            ></Image>
+          </ActionIcon>
+        </div>
+        <Prism
+          classNames={{
+            root: classes.rootCodeBlock,
+            code: classes.codeBlock,
+          }}
+          language={'javascript'}
+          copyLabel={COPY_CODE}
+          copiedLabel={COPIED_CODE}
+        >
+          {CODE}
+        </Prism>
+      </Container>
+    </div>
   );
 };
 
