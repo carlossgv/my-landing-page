@@ -1,3 +1,5 @@
+import smoothScrollTo from '../../utils/scroll-section';
+
 const InternalAnchor = ({
   children,
   hrefId,
@@ -7,19 +9,8 @@ const InternalAnchor = ({
   hrefId: string;
   className?: string;
 }) => {
-  const smoothScrollTo = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-
-    const element = document.getElementById(hrefId);
-
-    element?.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth', // smooth scroll
-    });
-  };
-
   return (
-    <a href="" onClick={smoothScrollTo} className={className}>
+    <a href="" onClick={(e) => smoothScrollTo(hrefId, e)} className={className}>
       {children}
     </a>
   );

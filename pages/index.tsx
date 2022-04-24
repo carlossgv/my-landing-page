@@ -8,6 +8,7 @@ import NavigationBar from '../components/NavigationBar/NavigationBar';
 import PersonalInfo from '../components/PersonalInfo/PersonalInfo';
 import { localeCheck } from '../utils/locale-check';
 import { ArrowUp } from 'tabler-icons-react';
+import smoothScrollTo from '../utils/scroll-section';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -33,9 +34,12 @@ const Home: NextPage = () => {
   const [navHeight, setNavHeight] = useState(0);
 
   const updateNavHeight = (height: number) => {
-    console.log(height);
     setNavHeight(height);
   };
+
+  useEffect(() => {
+    smoothScrollTo('home');
+  });
 
   // Sidebar
   // Navbar
