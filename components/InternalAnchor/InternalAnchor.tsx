@@ -1,9 +1,11 @@
 const InternalAnchor = ({
   children,
   hrefId,
+  className,
 }: {
   children: any;
   hrefId: string;
+  className?: string;
 }) => {
   const smoothScrollTo = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const InternalAnchor = ({
   };
 
   return (
-    <a href="" onClick={smoothScrollTo}>
+    <a href="" onClick={smoothScrollTo} className={className}>
       {children}
     </a>
   );

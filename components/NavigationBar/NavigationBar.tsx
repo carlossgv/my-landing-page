@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import pageData from '../../utils/page-data';
+import InternalAnchor from '../InternalAnchor/InternalAnchor';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -38,9 +39,11 @@ const useStyles = createStyles((theme) => ({
   },
   link: {
     color: 'white',
+    textDecoration: 'none',
     '&:hover': {
       textDecoration: 'none',
     },
+    '&:active': { textDecoration: 'none' },
   },
   buttonContainer: {
     display: 'flex',
@@ -67,7 +70,7 @@ const NavigationBar = ({
 
   const handleResize = () => {
     // @ts-ignore: Nulling is handled by the useEffect hook
-    navHeightHandler(navHeightRef.current.offsetHeight);
+    navHeightHandler(navHeightRef?.current.offsetHeight);
   };
 
   useEffect(() => {
@@ -80,15 +83,9 @@ const NavigationBar = ({
         <Title order={6}>{'<CG.DEV/>'}</Title>
 
         <Container className={classes.linksContainer}>
-          <Text
-            transform="uppercase"
-            className={classes.link}
-            variant="link"
-            component="a"
-            href="#"
-          >
-            {ABOUT_ME}
-          </Text>
+          <InternalAnchor hrefId={'personal-info'} className={classes.link}>
+            <Text transform="uppercase">{ABOUT_ME}</Text>
+          </InternalAnchor>
           <Text
             transform="uppercase"
             className={classes.link}
