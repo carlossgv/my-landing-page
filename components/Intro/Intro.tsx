@@ -120,7 +120,10 @@ const Intro = ({
   return (
     <div
       className={classes.mainBackground}
-      style={{ height: `calc(100vh - ${navHeight}px)` }}
+      style={{
+        height: `calc(100vh - ${navHeight}px)`,
+        minHeight: '-webkit-fill-available',
+      }}
     >
       <Container className={classes.introRoot} size={'xl'}>
         <div className={classes.info}>
