@@ -66,6 +66,7 @@ const NavigationBar = ({
   const navHeightRef = useRef(null);
 
   const handleResize = () => {
+    // @ts-ignore: Nulling is handled by the useEffect hook
     navHeightHandler(navHeightRef.current.offsetHeight);
   };
 
