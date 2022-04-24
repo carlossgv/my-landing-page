@@ -121,7 +121,7 @@ const Intro = ({
     <div
       className={classes.mainBackground}
       style={{
-        minHeight: '-webkit-fill-available',
+        height: `calc(100vh - ${navHeight}px)`,
       }}
     >
       <Container className={classes.introRoot} size={'xl'}>
