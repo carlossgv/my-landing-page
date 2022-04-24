@@ -1,11 +1,13 @@
-import { Container, createStyles } from '@mantine/core';
+import { ActionIcon, Button, Container, createStyles } from '@mantine/core';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import InternalAnchor from '../components/InternalAnchor/InternalAnchor';
 import Intro from '../components/Intro/Intro';
 import NavigationBar from '../components/NavigationBar/NavigationBar';
 import PersonalInfo from '../components/PersonalInfo/PersonalInfo';
 import { localeCheck } from '../utils/locale-check';
+import { ArrowUp } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -15,6 +17,11 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     rowGap: 0,
+  },
+  goUpButton: {
+    position: 'fixed',
+    bottom: 16,
+    right: 16,
   },
 }));
 
@@ -46,7 +53,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="home">
       <NavigationBar
         locale={validLocale}
         updateLocale={handleUpdateLocale}
@@ -54,6 +61,11 @@ const Home: NextPage = () => {
       ></NavigationBar>
       <Intro navHeight={navHeight} locale={validLocale}></Intro>
       <PersonalInfo></PersonalInfo>
+      <InternalAnchor hrefId={'home'} className={classes.goUpButton}>
+        <ActionIcon variant="outline" radius="xl" size="lg">
+          <ArrowUp size={24} />
+        </ActionIcon>
+      </InternalAnchor>
     </div>
   );
 };
