@@ -1,29 +1,4 @@
-interface PageData {
-  navigationBar: {
-    aboutMe: { [key: string]: string };
-    projects: { [key: string]: string };
-    contact: { [key: string]: string };
-  };
-  intro: {
-    title: {
-      [key: string]: string;
-    };
-    description: {
-      [key: string]: string;
-    };
-    button: {
-      [key: string]: string;
-    };
-    copyCode: {
-      [key: string]: string;
-    };
-    copiedCode: {
-      [key: string]: string;
-    };
-  };
-}
-
-const pageData: PageData = {
+const pageData = {
   navigationBar: {
     aboutMe: {
       en: 'About me',
@@ -60,6 +35,26 @@ const pageData: PageData = {
       es: 'Código copiado al portapapeles',
     },
   },
+  repos: [
+    {
+      title: {
+        en: 'Tmux Script Creator',
+        es: 'Creador Scripts para Tmux',
+      },
+      description: {
+        en: 'Simple GUI to create multiple windows and panes in Tmux',
+        es: 'GUI simple para crear múltiples ventanas y paneles en Tmux',
+      },
+      imageUrl: {
+        en: '/../public/assets/images/tmux-app.png',
+        es: '/../public/assets/images/tmux-app.png',
+      },
+      link: {
+        en: 'https://github.com/carlossgv/tmux-script-creator',
+        es: 'https://github.com/carlossgv/tmux-script-creator',
+      },
+    },
+  ],
 };
 
 export default pageData;

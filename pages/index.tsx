@@ -1,14 +1,16 @@
-import { ActionIcon, Button, Container, createStyles } from '@mantine/core';
+import { ActionIcon, createStyles } from '@mantine/core';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import InternalAnchor from '../components/InternalAnchor/InternalAnchor';
 import Intro from '../components/Intro/Intro';
 import NavigationBar from '../components/NavigationBar/NavigationBar';
 import PersonalInfo from '../components/PersonalInfo/PersonalInfo';
 import { localeCheck } from '../utils/locale-check';
 import { ArrowUp } from 'tabler-icons-react';
-import smoothScrollTo from '../utils/scroll-section';
+import Repos from '../components/Repos/Repos';
+import pageData from '../utils/page-data';
+
+const navigationData = pageData.navigationBar;
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -31,11 +33,11 @@ const Home: NextPage = () => {
 
   const router = useRouter();
   const validLocale = localeCheck(router.locale);
-  const [navHeight, setNavHeight] = useState(0);
+  // const [navHeight, setNavHeight] = useState(0);
 
-  const updateNavHeight = (height: number) => {
-    setNavHeight(height);
-  };
+  // const updateNavHeight = (height: number) => {
+  //   setNavHeight(height);
+  // };
 
   // Sidebar
   // Navbar
@@ -57,15 +59,17 @@ const Home: NextPage = () => {
       <NavigationBar
         locale={validLocale}
         updateLocale={handleUpdateLocale}
-        navHeightHandler={(height) => updateNavHeight(height)}
+        data={navigationData}
+        // navHeightHandler={(height) => updateNavHeight(height)}
       ></NavigationBar>
-      <Intro navHeight={navHeight} locale={validLocale}></Intro>
+      <Intro navHeight={120} locale={validLocale}></Intro>
       <PersonalInfo></PersonalInfo>
       <InternalAnchor hrefId={'home'} className={classes.goUpButton}>
         <ActionIcon variant="outline" radius="xl" size="lg">
           <ArrowUp size={24} />
         </ActionIcon>
       </InternalAnchor>
+      <Repos locale={validLocale}></Repos>
     </div>
   );
 };

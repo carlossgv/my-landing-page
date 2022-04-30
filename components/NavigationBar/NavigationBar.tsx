@@ -6,8 +6,6 @@ import {
   Header,
   Button,
 } from '@mantine/core';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { useRef } from 'react';
 import pageData from '../../utils/page-data';
 import InternalAnchor from '../InternalAnchor/InternalAnchor';
@@ -54,28 +52,32 @@ const useStyles = createStyles((theme) => ({
 const NavigationBar = ({
   locale,
   updateLocale,
-  navHeightHandler,
-}: {
+  data,
+}: // navHeightHandler,
+{
   locale: string;
   updateLocale: (locale: string) => void;
-  navHeightHandler: (height: number) => void;
+  data: any;
+  // navHeightHandler: (height: number) => void;
 }) => {
   const { classes } = useStyles();
 
-  const ABOUT_ME = pageData.navigationBar.aboutMe[locale];
-  const PROJECTS = pageData.navigationBar.projects[locale];
-  const CONTACT = pageData.navigationBar.contact[locale];
+  const ABOUT_ME = data.aboutMe[locale];
+  const PROJECTS = data.projects[locale];
+  const CONTACT = data.contact[locale];
 
   const navHeightRef = useRef(null);
 
-  const handleResize = () => {
-    // @ts-ignore: Nulling is handled by the useEffect hook
-    navHeightHandler(navHeightRef?.current.offsetHeight);
-  };
+  // const handleResize = () => {
+  //   if (navHeightRef != null) {
+  //     // @ts-ignore: Nulling is handled by the useEffect hook
+  //     navHeightHandler(navHeightRef.current.offsetHeight);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener('resize', handleResize, false);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('resize', handleResize, false);
+  // }, []);
 
   return (
     <Header height={'100%'} className={classes.root} ref={navHeightRef}>
@@ -86,15 +88,9 @@ const NavigationBar = ({
           <InternalAnchor hrefId={'personal-info'} className={classes.link}>
             <Text transform="uppercase">{ABOUT_ME}</Text>
           </InternalAnchor>
-          <Text
-            transform="uppercase"
-            className={classes.link}
-            variant="link"
-            component="a"
-            href="#"
-          >
-            {PROJECTS}
-          </Text>
+          <InternalAnchor hrefId={'repos'} className={classes.link}>
+            <Text transform="uppercase">{PROJECTS}</Text>
+          </InternalAnchor>
           <Text
             transform="uppercase"
             className={classes.link}
