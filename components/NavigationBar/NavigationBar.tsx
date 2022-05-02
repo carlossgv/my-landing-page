@@ -53,12 +53,10 @@ const NavigationBar = ({
   locale,
   updateLocale,
   data,
-}: // navHeightHandler,
-{
+}: {
   locale: string;
   updateLocale: (locale: string) => void;
   data: any;
-  // navHeightHandler: (height: number) => void;
 }) => {
   const { classes } = useStyles();
 
@@ -67,17 +65,6 @@ const NavigationBar = ({
   const CONTACT = data.contact[locale];
 
   const navHeightRef = useRef(null);
-
-  // const handleResize = () => {
-  //   if (navHeightRef != null) {
-  //     // @ts-ignore: Nulling is handled by the useEffect hook
-  //     navHeightHandler(navHeightRef.current.offsetHeight);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', handleResize, false);
-  // }, []);
 
   return (
     <Header height={'100%'} className={classes.root} ref={navHeightRef}>

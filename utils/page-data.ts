@@ -45,14 +45,32 @@ const pageData = {
         en: 'Simple GUI to create multiple windows and panes in Tmux',
         es: 'GUI simple para crear múltiples ventanas y paneles en Tmux',
       },
-      imageUrl: {
-        en: '/../public/assets/images/tmux-app.png',
-        es: '/../public/assets/images/tmux-app.png',
+      imageUrl: '/../public/assets/images/tmux-app.png',
+      link: 'https://github.com/carlossgv/tmux-script-creator',
+    },
+    {
+      title: {
+        en: 'My Landing Page',
+        es: 'Mi Página Web',
       },
-      link: {
-        en: 'https://github.com/carlossgv/tmux-script-creator',
-        es: 'https://github.com/carlossgv/tmux-script-creator',
+      description: {
+        en: 'This very website source code!',
+        es: '¡El código fuente de esta misma página!',
       },
+      imageUrl: '/../public/assets/images/landing-page.png',
+      link: 'https://github.com/carlossgv/my-landing-page',
+    },
+    {
+      title: {
+        en: 'Accounting CRM',
+        es: 'CRM de Contabilidad',
+      },
+      description: {
+        en: 'Income/Expenses custom application for restaurant client',
+        es: 'Aplicación de control de gastos/ingresos creado para un cliente restaurant',
+      },
+      imageUrl: '/../public/assets/images/accounting-app.png',
+      link: 'https://github.com/carlossgv/dosbandidos_project',
     },
   ],
 };

@@ -9,6 +9,7 @@ import { localeCheck } from '../utils/locale-check';
 import { ArrowUp } from 'tabler-icons-react';
 import Repos from '../components/Repos/Repos';
 import pageData from '../utils/page-data';
+import { useEffect, useRef, useState } from 'react';
 
 const navigationData = pageData.navigationBar;
 
@@ -33,11 +34,13 @@ const Home: NextPage = () => {
 
   const router = useRouter();
   const validLocale = localeCheck(router.locale);
-  // const [navHeight, setNavHeight] = useState(0);
+  const [navHeight, setNavHeight] = useState(0);
+  const ref = useRef(null);
 
-  // const updateNavHeight = (height: number) => {
-  //   setNavHeight(height);
-  // };
+  useEffect(() => {
+    // @ts-ignore: error handled
+    setNavHeight(ref.current.clientHeight);
+  }, []);
 
   // Sidebar
   // Navbar
@@ -56,13 +59,14 @@ const Home: NextPage = () => {
 
   return (
     <div className={classes.root} id="home">
-      <NavigationBar
-        locale={validLocale}
-        updateLocale={handleUpdateLocale}
-        data={navigationData}
-        // navHeightHandler={(height) => updateNavHeight(height)}
-      ></NavigationBar>
-      <Intro navHeight={120} locale={validLocale}></Intro>
+      <div ref={ref}>
+        <NavigationBar
+          locale={validLocale}
+          updateLocale={handleUpdateLocale}
+          data={navigationData}
+        ></NavigationBar>
+      </div>
+      <Intro navHeight={navHeight} locale={validLocale}></Intro>
       <PersonalInfo></PersonalInfo>
       <InternalAnchor hrefId={'home'} className={classes.goUpButton}>
         <ActionIcon variant="outline" radius="xl" size="lg">

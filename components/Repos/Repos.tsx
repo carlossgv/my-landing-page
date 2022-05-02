@@ -1,6 +1,7 @@
 import { Container, createStyles, Title } from '@mantine/core';
 import Carousel from '../common/Carousel/Carousel';
 import PageData from '../../utils/page-data';
+import Link from 'next/link';
 
 const reposData = PageData.repos;
 
@@ -24,7 +25,10 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-    columnGap: 30,
+
+    rowGap: 50,
+    position: 'relative',
+    overflow: 'hidden',
   },
 }));
 
@@ -32,15 +36,15 @@ const Repos = ({ locale }: { locale: string }) => {
   const { classes } = useStyles();
 
   return (
-    <a id="repos">
-      <div className={classes.mainBackground}>
-        <Container size={'xl'} className={classes.root}>
+    <div id="repos" className={classes.mainBackground}>
+      <Container size={'xl'} className={classes.root}>
+        <div>
           <Title order={1}>Github Repos</Title>
           <p>GITHUB REPOS</p>
-          <Carousel locale={locale} data={reposData}></Carousel>
-        </Container>
-      </div>
-    </a>
+        </div>
+        <Carousel locale={locale} data={reposData}></Carousel>
+      </Container>
+    </div>
   );
 };
 
