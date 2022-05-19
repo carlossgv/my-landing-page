@@ -11,25 +11,25 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
   },
   card: {
+    width: CARD_WIDTH,
     minHeight: MIN_CARD_HEIGHT,
     padding: 0,
     display: 'flex',
     flexDirection: 'column',
   },
-  currentCard: {
-    width: CARD_WIDTH,
-    boxShadow: `30px 30px 0 -15px ${theme.colors.accent[3]}`,
-    WebkitBoxShadow: `30px 30px 0 -15px ${theme.colors.accent[3]}`,
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      boxShadow: `10px 10px 0 -15px ${theme.colors.accent[3]}`,
-      WebkitBoxShadow: `10px 10px 0 -5px ${theme.colors.accent[3]}`,
-      marginRight: 5,
-    },
-  },
-  notCurrentCard: {
-    opacity: 0.3,
-    width: CARD_WIDTH - 16,
-  },
+  // currentCard: {
+  //   boxShadow: `30px 30px 0 -15px ${theme.colors.accent[3]}`,
+  //   WebkitBoxShadow: `30px 30px 0 -15px ${theme.colors.accent[3]}`,
+  //   [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+  //     boxShadow: `10px 10px 0 -15px ${theme.colors.accent[3]}`,
+  //     WebkitBoxShadow: `10px 10px 0 -5px ${theme.colors.accent[3]}`,
+  //     marginRight: 5,
+  //   },
+  // },
+  // notCurrentCard: {
+  //   opacity: 0.3,
+  //   width: CARD_WIDTH - 16,
+  // },
   info: {
     display: 'flex',
     flexDirection: 'column',
@@ -46,22 +46,15 @@ const RepoCard = ({
   imageUrl,
   title,
   description,
-  currentCard,
 }: {
   imageUrl: string;
   title: string;
   description: string;
-  currentCard: boolean;
 }) => {
   const { classes } = useStyles();
 
   return (
-    <Card
-      className={
-        (classes.card,
-        currentCard ? classes.currentCard : classes.notCurrentCard)
-      }
-    >
+    <Card className={classes.card}>
       <Card.Section>
         <Image
           width={CARD_WIDTH}
