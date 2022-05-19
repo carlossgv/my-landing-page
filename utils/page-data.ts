@@ -1,4 +1,22 @@
-const pageData = {
+type PageData = {
+  navigationBar: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
+  intro: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
+  repos: RepoData[];
+};
+
+type RepoData = {
+  [key: string]: { [key: string]: string } | string;
+};
+
+const pageData: PageData = {
   navigationBar: {
     aboutMe: {
       en: 'About me',

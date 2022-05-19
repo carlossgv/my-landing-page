@@ -104,11 +104,8 @@ const Intro = ({
 }) => {
   const { classes } = useStyles();
 
-  // @ts-ignore
   const TITLE = pageData.intro.title[locale];
-  // @ts-ignore
   const DESCRIPTION = pageData.intro.description[locale];
-  // @ts-ignore
   const BUTTON_TEXT = pageData.intro.button[locale];
   const CODE = `get({ table: "answer", column: "answerid"})
   .then((answer) => {return get({
@@ -116,9 +113,7 @@ const Intro = ({
       column: "questionid",
       value: answer.answerquestion,
     })`;
-  // @ts-ignore
   const COPY_CODE = pageData.intro.copyCode[locale];
-  // @ts-ignore
   const COPIED_CODE = pageData.intro.copiedCode[locale];
 
   return (
