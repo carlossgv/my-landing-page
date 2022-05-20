@@ -1,3 +1,7 @@
+import LandingPageImage from '../public/assets/images/landing-page.png';
+import TmuxScriptImage from '../public/assets/images/tmux-app.png';
+import AccountingCRMImage from '../public/assets/images/accounting-app.png';
+
 type PageData = {
   navigationBar: {
     [key: string]: {
@@ -13,7 +17,7 @@ type PageData = {
 };
 
 type RepoData = {
-  [key: string]: { [key: string]: string } | string;
+  [key: string]: { [key: string]: string } | string | any;
 };
 
 const pageData: PageData = {
@@ -63,7 +67,7 @@ const pageData: PageData = {
         en: 'Simple GUI to create multiple windows and panes in Tmux',
         es: 'GUI simple para crear múltiples ventanas y paneles en Tmux',
       },
-      imageUrl: '/../public/assets/images/tmux-app.png',
+      imageUrl: TmuxScriptImage,
       link: 'https://github.com/carlossgv/tmux-script-creator',
     },
     {
@@ -75,7 +79,7 @@ const pageData: PageData = {
         en: 'This very website source code!',
         es: '¡El código fuente de esta misma página!',
       },
-      imageUrl: '/../public/assets/images/landing-page.png',
+      imageUrl: LandingPageImage,
       link: 'https://github.com/carlossgv/my-landing-page',
     },
     {
@@ -87,7 +91,7 @@ const pageData: PageData = {
         en: 'Income/Expenses custom application for restaurant client',
         es: 'Aplicación de control de gastos/ingresos creado para un cliente restaurant',
       },
-      imageUrl: '/../public/assets/images/accounting-app.png',
+      imageUrl: AccountingCRMImage,
       link: 'https://github.com/carlossgv/dosbandidos_project',
     },
   ],
