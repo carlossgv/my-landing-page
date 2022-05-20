@@ -17,19 +17,6 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  // currentCard: {
-  //   boxShadow: `30px 30px 0 -15px ${theme.colors.accent[3]}`,
-  //   WebkitBoxShadow: `30px 30px 0 -15px ${theme.colors.accent[3]}`,
-  //   [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-  //     boxShadow: `10px 10px 0 -15px ${theme.colors.accent[3]}`,
-  //     WebkitBoxShadow: `10px 10px 0 -5px ${theme.colors.accent[3]}`,
-  //     marginRight: 5,
-  //   },
-  // },
-  // notCurrentCard: {
-  //   opacity: 0.3,
-  //   width: CARD_WIDTH - 16,
-  // },
   info: {
     display: 'flex',
     flexDirection: 'column',
@@ -39,7 +26,9 @@ const useStyles = createStyles((theme) => ({
     marginTop: -8,
     padding: '0 20px',
   },
-  description: {},
+  description: {
+    textDecoration: 'none',
+  },
 }));
 
 const RepoCard = ({
