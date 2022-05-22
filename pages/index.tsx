@@ -10,6 +10,7 @@ import { ArrowUp } from 'tabler-icons-react';
 import Repos from '../components/Repos/Repos';
 import pageData from '../utils/page-data';
 import { useEffect, useRef, useState } from 'react';
+import TechStack from '../components/TechStack/TechStack';
 
 const navigationData = pageData.navigationBar;
 
@@ -74,6 +75,7 @@ const Home: NextPage = () => {
         </ActionIcon>
       </InternalAnchor>
       <Repos locale={validLocale}></Repos>
+      <TechStack locale={validLocale}></TechStack>
     </div>
   );
 };

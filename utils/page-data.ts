@@ -14,6 +14,11 @@ type PageData = {
     };
   };
   repos: RepoData[];
+  techStack: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
 };
 
 type RepoData = {
@@ -95,6 +100,20 @@ const pageData: PageData = {
       link: 'https://github.com/carlossgv/dosbandidos_project',
     },
   ],
+  techStack: {
+    firstSentence: {
+      en: 'The Stack Of',
+      es: 'El Stack De',
+    },
+    secondSentence: {
+      en: 'Technologies',
+      es: 'Tecnologías',
+    },
+    thirdSentence: {
+      en: 'I Use',
+      es: 'Que Uso',
+    },
+  },
 };
 
 export default pageData;
