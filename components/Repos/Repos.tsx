@@ -1,6 +1,7 @@
 import { Container, createStyles, Title } from '@mantine/core';
 import Carousel from '../common/Carousel/Carousel';
 import PageData from '../../utils/page-data';
+import Link from 'next/link';
 
 const reposData = PageData.repos;
 
@@ -24,10 +25,6 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-
-    rowGap: 50,
-    position: 'relative',
-    overflow: 'hidden',
   },
 }));
 
