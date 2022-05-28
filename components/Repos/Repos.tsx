@@ -1,5 +1,5 @@
 import { Container, createStyles, Title } from '@mantine/core';
-import Carousel from '../common/Carousel/Carousel';
+import ReposCarousel from '../ReposCarousel/ReposCarousel';
 import PageData from '../../utils/page-data';
 import Link from 'next/link';
 
@@ -38,7 +38,7 @@ const Repos = ({ locale }: { locale: string }) => {
           <Title order={1}>Github Repos</Title>
           <p>GITHUB REPOS</p>
         </div>
-        <Carousel locale={locale} data={reposData}></Carousel>
+        <ReposCarousel locale={locale} data={reposData}></ReposCarousel>
       </Container>
     </div>
   );

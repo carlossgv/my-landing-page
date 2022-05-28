@@ -1,6 +1,6 @@
 import { ActionIcon, createStyles } from '@mantine/core';
 import { useState } from 'react';
-import RepoCard from '../RepoCard/RepoCard';
+import RepoCard from '../common/RepoCard/RepoCard';
 import { ArrowLeft, ArrowRight } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
@@ -28,7 +28,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const Carousel = ({ data, locale }: { data: any[]; locale: string }) => {
+const ReposCarousel = ({ data, locale }: { data: any[]; locale: string }) => {
   const { classes } = useStyles();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -104,4 +104,4 @@ const Carousel = ({ data, locale }: { data: any[]; locale: string }) => {
   );
 };
 
-export default Carousel;
+export default ReposCarousel;
