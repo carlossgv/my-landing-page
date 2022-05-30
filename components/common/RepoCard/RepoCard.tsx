@@ -10,7 +10,7 @@ const useStyles = createStyles((theme) => ({
     padding: 0,
     display: 'flex',
     flexDirection: 'column',
-    background: theme.colors.backgroundSecondary[4],
+    background: theme.colors.backgroundSecondary[0],
     margin: 'auto',
   },
   info: {

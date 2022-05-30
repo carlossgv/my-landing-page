@@ -9,7 +9,7 @@ const useStyles = createStyles((theme) => ({
   root: {
     height: '100vh',
     width: '100%',
-    backgroundColor: theme.colors.backgroundPrimary[4],
+    backgroundColor: theme.colors.backgroundPrimary[0],
     display: 'flex',
     flexDirection: 'column',
 
@@ -18,7 +18,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   reposDiv: {
-    background: theme.colors.backgroundPrimary[4],
+    background: theme.colors.backgroundPrimary[0],
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',

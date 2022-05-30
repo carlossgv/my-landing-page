@@ -15,7 +15,7 @@ import InternalAnchor from '../InternalAnchor/InternalAnchor';
 const useStyles = createStyles((theme) => ({
   mainBackground: {
     width: '100%',
-    backgroundColor: theme.colors.backgroundPrimary[4],
+    backgroundColor: theme.colors.backgroundPrimary[0],
   },
   introRoot: {
     height: '100%',
