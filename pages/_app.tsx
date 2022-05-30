@@ -25,21 +25,11 @@ export default function App(props: AppProps) {
             md: 16,
           },
           colors: {
-            accent: [
-              '#FFAF29', // Default value
-            ],
-            backgroundPrimary: [
-              '#111319', // Default value
-            ],
-            backgroundSecondary: [
-              '#191C26', // Default value
-            ],
-            sidebarBackground: [
-              '#080A12', // Default value
-            ],
-            mutedText: [
-              '#A9AFC3', // Default value
-            ],
+            accent: ['#FFAF29'],
+            backgroundPrimary: ['#111319'],
+            backgroundSecondary: ['#191C26'],
+            sidebarBackground: ['#080A12'],
+            mutedText: ['#A9AFC3'],
             text: ['#C1C2C5'],
           },
           headings: {
