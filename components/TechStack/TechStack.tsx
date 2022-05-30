@@ -13,7 +13,7 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     columnGap: 50,
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+    [`@media (max-width: ${theme.breakpoints.md}px)`]: {
       flexDirection: 'column',
       rowGap: 40,
     },
@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   highlightedText: {
-    color: theme.colors.accent[3],
+    color: theme.colors.accent[0],
   },
 }));
 

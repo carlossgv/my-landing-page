@@ -1,7 +1,6 @@
 import { Container, createStyles, Title } from '@mantine/core';
 import ReposCarousel from '../ReposCarousel/ReposCarousel';
 import PageData from '../../utils/page-data';
-import Link from 'next/link';
 import TechStack from '../TechStack/TechStack';
 
 const reposData = PageData.repos;
@@ -27,6 +26,15 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
     height: '100%',
     padding: 80,
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      width: '100%',
+    },
+  },
+  carouselWrapper: {
+    width: '50%',
+    [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+      width: '100%',
+    },
   },
 }));
 
@@ -40,7 +48,9 @@ const ReposAndStack = ({ locale }: { locale: string }) => {
           <Title order={1}>Github Repos</Title>
           <p>GITHUB REPOS</p>
         </div>
-        <ReposCarousel locale={locale} data={reposData}></ReposCarousel>
+        <div className={classes.carouselWrapper}>
+          <ReposCarousel locale={locale} data={reposData}></ReposCarousel>
+        </div>
       </Container>
       <TechStack locale={locale}></TechStack>
     </div>

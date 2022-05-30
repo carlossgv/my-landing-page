@@ -1,4 +1,4 @@
-import { Text, Card, createStyles } from '@mantine/core';
+import { Text, createStyles } from '@mantine/core';
 import Image from 'next/image';
 
 const useStyles = createStyles((theme) => ({
@@ -11,6 +11,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     background: theme.colors.backgroundSecondary[4],
+    margin: 'auto',
   },
   info: {
     display: 'flex',
@@ -19,7 +20,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
     marginTop: -8,
     padding: 20,
-    color: 'white',
+    color: theme.colors.text[0],
     textDecoration: 'none',
   },
   description: {

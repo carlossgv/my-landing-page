@@ -52,18 +52,18 @@ const useStyles = createStyles((theme) => ({
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {},
   },
   headText: {
-    color: theme.colors.mutedText[3],
+    color: theme.colors.mutedText[0],
   },
   titleDot: {
-    color: theme.colors.accent[3],
+    color: theme.colors.accent[0],
   },
   button: {
-    backgroundColor: theme.colors.accent[3],
+    backgroundColor: theme.colors.accent[0],
     borderRadius: 0,
     marginTop: 30,
     marginBottom: 30,
     '&:hover': {
-      backgroundColor: theme.colors.accent[4],
+      backgroundColor: theme.colors.accent[0],
     },
     width: 180,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {

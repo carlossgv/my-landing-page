@@ -9,7 +9,7 @@ const useStyles = createStyles((theme) => ({
   mainBackground: {
     height: '100vh',
     width: '100%',
-    backgroundColor: theme.colors.backgroundSecondary[4],
+    backgroundColor: theme.colors.backgroundSecondary[0],
 
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       height: 'auto',
@@ -18,7 +18,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   root: {
-    background: theme.colors.backgroundSecondary[4],
+    background: theme.colors.backgroundSecondary[0],
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -31,8 +31,8 @@ const useStyles = createStyles((theme) => ({
     },
   },
   pictureDiv: {
-    boxShadow: `-15px 15px 0px 0px ${theme.colors.accent[3]}`,
-    WebkitBoxShadow: `-15px 15px 0px 0px ${theme.colors.accent[3]}`,
+    boxShadow: `-15px 15px 0px 0px ${theme.colors.accent[0]}`,
+    WebkitBoxShadow: `-15px 15px 0px 0px ${theme.colors.accent[0]}`,
     display: 'flex',
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       marginLeft: 15,
@@ -44,14 +44,14 @@ const useStyles = createStyles((theme) => ({
   },
   info: { maxWidth: 400 },
   subtitle: {
-    color: theme.colors.accent[3],
+    color: theme.colors.accent[0],
   },
   buttonContainer: {
     display: 'flex',
     columnGap: 18,
   },
   button: {
-    background: theme.colors.accent[3],
+    background: theme.colors.accent[0],
     height: 60,
     width: 60,
   },
