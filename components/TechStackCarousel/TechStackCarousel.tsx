@@ -39,8 +39,6 @@ function TechStackCarousel({ logos }: Props) {
       className={classes.root}
       modules={[Autoplay, Navigation]}
       slidesPerView={2}
-      spaceBetween={10}
-      centeredSlides
       breakpoints={{
         800: {
           slidesPerView: 3,
