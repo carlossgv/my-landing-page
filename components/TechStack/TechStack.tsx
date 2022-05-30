@@ -4,7 +4,7 @@ import TechStackCarousel from '../TechStackCarousel/TechStackCarousel';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
-    background: theme.colors.backgroundSecondary[4],
+    background: theme.colors.backgroundSecondary[0],
   },
   root: {
     display: 'flex',

@@ -26,9 +26,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
     height: '100%',
     padding: 80,
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      width: '100%',
-    },
+    width: '100%',
   },
   carouselWrapper: {
     width: '50%',
