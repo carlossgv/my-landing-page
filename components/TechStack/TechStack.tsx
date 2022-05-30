@@ -8,9 +8,17 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     padding: '40px 0px',
     alignItems: 'center',
+    justifyContent: 'center',
+    columnGap: 50,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       flexDirection: 'column',
       rowGap: 20,
+    },
+  },
+  logos: {
+    width: '60%',
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      width: '80%',
     },
   },
   text: {},
@@ -35,7 +43,7 @@ const TechStack = ({ locale }: { locale: string }) => {
         </Title>
         <Title order={4}>{THIRD_SENTENCE}</Title>
       </div>
-      <div style={{ width: '70%' }}>
+      <div className={classes.logos}>
         <TechStackCarousel logos={techStackData} />
       </div>
     </Container>
