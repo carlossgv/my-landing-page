@@ -2,6 +2,20 @@ import LandingPageImage from '../public/assets/images/landing-page.png';
 import TmuxScriptImage from '../public/assets/images/tmux-app.png';
 import AccountingCRMImage from '../public/assets/images/accounting-app.png';
 
+import CSSLogo from '../public/assets/icons/tech-stack/css.svg';
+import DjangoLogo from '../public/assets/icons/tech-stack/django.svg';
+import GoogleClourCertLogo from '../public/assets/icons/tech-stack/google-cloud-cert-logo.png';
+import GCPLogo from '../public/assets/icons/tech-stack/google-cloud.svg';
+import HTMLLogo from '../public/assets/icons/tech-stack/html.svg';
+import JavascriptLogo from '../public/assets/icons/tech-stack/javascript.svg';
+import NestJSLogo from '../public/assets/icons/tech-stack/nestjs.svg';
+import NextJSLogo from '../public/assets/icons/tech-stack/next-js.svg';
+import NodeJSLogo from '../public/assets/icons/tech-stack/nodejs.svg';
+import PythonLogo from '../public/assets/icons/tech-stack/python.svg';
+import ReactNativeLogo from '../public/assets/icons/tech-stack/react-native.svg';
+import ReactLogo from '../public/assets/icons/tech-stack/react.svg';
+import TypescriptLogo from '../public/assets/icons/tech-stack/typescript.svg';
+
 type PageData = {
   navigationBar: {
     [key: string]: {
@@ -114,6 +128,26 @@ const pageData: PageData = {
       es: 'Que Uso',
     },
   },
+};
+
+export const techStackData: TechStackData[] = [
+  { name: 'Typescript', logo: TypescriptLogo },
+  { name: 'Javascript', logo: JavascriptLogo },
+  { name: 'Python', logo: PythonLogo },
+  { name: 'React', logo: ReactLogo },
+  { name: 'NextJS', logo: NextJSLogo },
+  { name: 'React Native', logo: ReactNativeLogo },
+  { name: 'NodeJS', logo: NodeJSLogo },
+  { name: 'NestJS', logo: NestJSLogo },
+  { name: 'CGP', logo: GCPLogo },
+  { name: 'Django', logo: DjangoLogo },
+  { name: 'CSS', logo: CSSLogo },
+  { name: 'HTML', logo: HTMLLogo },
+];
+
+export type TechStackData = {
+  name: string;
+  logo: string;
 };
 
 export default pageData;
