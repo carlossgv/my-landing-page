@@ -3,6 +3,9 @@ import pageData, { techStackData } from '../../utils/page-data';
 import TechStackCarousel from '../TechStackCarousel/TechStackCarousel';
 
 const useStyles = createStyles((theme) => ({
+  wrapper: {
+    background: theme.colors.backgroundSecondary[4],
+  },
   root: {
     display: 'flex',
     width: '100%',
@@ -12,7 +15,7 @@ const useStyles = createStyles((theme) => ({
     columnGap: 50,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       flexDirection: 'column',
-      rowGap: 20,
+      rowGap: 40,
     },
   },
   logos: {
@@ -21,13 +24,18 @@ const useStyles = createStyles((theme) => ({
       width: '80%',
     },
   },
-  text: {},
   highlightedText: {
     color: theme.colors.accent[3],
   },
 }));
 
-const TechStack = ({ locale }: { locale: string }) => {
+const TechStack = ({
+  locale,
+  className,
+}: {
+  locale: string;
+  className?: string;
+}) => {
   const { classes } = useStyles();
 
   const FIRST_SENTENCE = pageData.techStack.firstSentence[locale];
@@ -35,18 +43,20 @@ const TechStack = ({ locale }: { locale: string }) => {
   const THIRD_SENTENCE = pageData.techStack.thirdSentence[locale];
 
   return (
-    <Container className={classes.root} size={'xl'}>
-      <div className={classes.text}>
-        <Title order={4}>{FIRST_SENTENCE}</Title>
-        <Title order={4} className={classes.highlightedText}>
-          {SECOND_SENTENCE}
-        </Title>
-        <Title order={4}>{THIRD_SENTENCE}</Title>
-      </div>
-      <div className={classes.logos}>
-        <TechStackCarousel logos={techStackData} />
-      </div>
-    </Container>
+    <div className={classes.wrapper}>
+      <Container className={`${classes.root} ${className}`} size={'xl'}>
+        <div>
+          <Title order={4}>{FIRST_SENTENCE}</Title>
+          <Title order={4} className={classes.highlightedText}>
+            {SECOND_SENTENCE}
+          </Title>
+          <Title order={4}>{THIRD_SENTENCE}</Title>
+        </div>
+        <div className={classes.logos}>
+          <TechStackCarousel logos={techStackData} />
+        </div>
+      </Container>
+    </div>
   );
 };
 

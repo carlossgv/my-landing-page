@@ -15,7 +15,9 @@ const useStyles = createStyles((theme) => ({
   root: {
     ['.swiper-button-next, .swiper-button-prev']: {
       color: theme.colors.mutedText[3],
-      //   color: 'transparent',
+      [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+        paddingBottom: 80,
+      },
     },
   },
 }));
