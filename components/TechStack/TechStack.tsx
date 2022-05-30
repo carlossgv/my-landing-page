@@ -8,7 +8,12 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     padding: '40px 0px',
     alignItems: 'center',
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      flexDirection: 'column',
+      rowGap: 20,
+    },
   },
+  text: {},
   highlightedText: {
     color: theme.colors.accent[3],
   },
@@ -23,7 +28,7 @@ const TechStack = ({ locale }: { locale: string }) => {
 
   return (
     <Container className={classes.root} size={'xl'}>
-      <div style={{ width: '30%' }}>
+      <div className={classes.text}>
         <Title order={4}>{FIRST_SENTENCE}</Title>
         <Title order={4} className={classes.highlightedText}>
           {SECOND_SENTENCE}

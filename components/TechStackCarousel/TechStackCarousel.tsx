@@ -27,7 +27,16 @@ function TechStackCarousel({ logos }: Props) {
   return (
     <Swiper
       modules={[Pagination, Navigation, Autoplay]}
-      slidesPerView={5}
+      slidesPerView={2}
+      loop
+      breakpoints={{
+        800: {
+          slidesPerView: 3,
+        },
+        1200: {
+          slidesPerView: 5,
+        },
+      }}
       //   autoplay
     >
       {cards}
