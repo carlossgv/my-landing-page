@@ -38,7 +38,7 @@ function TechStackCarousel({ logos }: Props) {
     <Swiper
       className={classes.root}
       modules={[Autoplay, Navigation]}
-      slidesPerView={2}
+      slidesPerView={1}
       breakpoints={{
         800: {
           slidesPerView: 3,
