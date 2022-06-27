@@ -1,10 +1,8 @@
 import LandingPageImage from '../public/assets/images/landing-page.png';
 import TmuxScriptImage from '../public/assets/images/tmux-app.png';
 import AccountingCRMImage from '../public/assets/images/accounting-app.png';
-
 import CSSLogo from '../public/assets/icons/tech-stack/css.svg';
 import DjangoLogo from '../public/assets/icons/tech-stack/django.svg';
-import GoogleClourCertLogo from '../public/assets/icons/tech-stack/google-cloud-cert-logo.png';
 import GCPLogo from '../public/assets/icons/tech-stack/google-cloud.svg';
 import HTMLLogo from '../public/assets/icons/tech-stack/html.svg';
 import JavascriptLogo from '../public/assets/icons/tech-stack/javascript.svg';
@@ -29,6 +27,11 @@ type PageData = {
   };
   repos: RepoData[];
   techStack: {
+    [key: string]: {
+      [key: string]: string;
+    };
+  };
+  contactMe: {
     [key: string]: {
       [key: string]: string;
     };
@@ -126,6 +129,36 @@ const pageData: PageData = {
     thirdSentence: {
       en: 'I Use',
       es: 'Que Uso',
+    },
+  },
+  contactMe: {
+    preTitle: {
+      en: "Let's get started",
+      es: '¡Empecemos!',
+    },
+    title: {
+      en: 'Get A Free Consultation',
+      es: 'Consulta Gratuita',
+    },
+    nameLabel: {
+      en: 'Name',
+      es: 'Nombre',
+    },
+    emailLabel: {
+      en: 'Email',
+      es: 'Email',
+    },
+    messageLabel: {
+      en: 'Message',
+      es: 'Mensaje',
+    },
+    buttonText: {
+      en: 'Send Message',
+      es: 'Enviar Mensaje',
+    },
+    additionalEmail: {
+      en: 'or send me an email at',
+      es: 'o envíeme un email a',
     },
   },
 };
