@@ -7,11 +7,9 @@ import NavigationBar from '../components/NavigationBar/NavigationBar';
 import PersonalInfo from '../components/PersonalInfo/PersonalInfo';
 import { localeCheck } from '../utils/locale-check';
 import { ArrowUp } from 'tabler-icons-react';
-import Repos from '../components/Repos/Repos';
-import pageData, { techStackData } from '../utils/page-data';
+import ReposAndStack from '../components/Repos/Repos';
+import pageData from '../utils/page-data';
 import { useEffect, useRef, useState } from 'react';
-import TechStack from '../components/TechStack/TechStack';
-import TechStackCarousel from '../components/TechStackCarousel/TechStackCarousel';
 
 const navigationData = pageData.navigationBar;
 
@@ -75,8 +73,7 @@ const Home: NextPage = () => {
           <ArrowUp size={24} />
         </ActionIcon>
       </InternalAnchor>
-      <Repos locale={validLocale}></Repos>
-      <TechStack locale={validLocale}></TechStack>
+      <ReposAndStack locale={validLocale}></ReposAndStack>
     </div>
   );
 };

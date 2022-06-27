@@ -1,7 +1,10 @@
-import { ActionIcon, createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core';
 import { useState } from 'react';
 import RepoCard from '../common/RepoCard/RepoCard';
-import { ArrowLeft, ArrowRight } from 'tabler-icons-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -10,6 +13,13 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       flexDirection: 'column',
+    },
+  },
+  carousel: {
+    width: '100%',
+    ['.swiper-button-next, .swiper-button-prev']: {
+      color: theme.colors.mutedText[0],
+      width: 10,
     },
   },
   desktopButton: {
@@ -49,6 +59,20 @@ const ReposCarousel = ({ data, locale }: { data: any[]; locale: string }) => {
     );
   };
 
+  const repoCards = data.map((cardData) => {
+    return (
+      <SwiperSlide key={`repo-card-${currentIndex}`}>
+        <a href={cardData.link} target="_blank" rel="noopener noreferrer">
+          <RepoCard
+            imageUrl={cardData.imageUrl}
+            title={cardData.title[locale]}
+            description={cardData.description[locale]}
+          />
+        </a>
+      </SwiperSlide>
+    );
+  });
+
   const handleMoveNext = () => {
     currentIndex === data.length - 1
       ? setCurrentIndex(0)
@@ -62,45 +86,55 @@ const ReposCarousel = ({ data, locale }: { data: any[]; locale: string }) => {
   };
 
   return (
-    <div className={classes.root}>
-      <ActionIcon
-        variant="outline"
-        radius="xl"
-        size="lg"
-        onClick={handleMoveNext}
-        className={classes.desktopButton}
-      >
-        <ArrowLeft size={24} />
-      </ActionIcon>
-      {linkedRepoCard(data[currentIndex])}
-      <ActionIcon
-        variant="outline"
-        radius="xl"
-        size="lg"
-        onClick={handleMovePrevious}
-        className={classes.desktopButton}
-      >
-        <ArrowRight size={24} />
-      </ActionIcon>
-      <div className={classes.mobileButtons}>
-        <ActionIcon
-          variant="outline"
-          radius="xl"
-          size="lg"
-          onClick={handleMoveNext}
-        >
-          <ArrowLeft size={24} />
-        </ActionIcon>
-        <ActionIcon
-          variant="outline"
-          radius="xl"
-          size="lg"
-          onClick={handleMovePrevious}
-        >
-          <ArrowRight size={24} />
-        </ActionIcon>
-      </div>
-    </div>
+    // <div className={classes.root}>
+    <Swiper
+      modules={[Navigation]}
+      className={classes.carousel}
+      slidesPerView={1}
+      // centeredSlides
+      navigation
+      loop
+    >
+      {repoCards}
+    </Swiper>
+    // {/* <ActionIcon
+    //   variant="outline"
+    //   radius="xl"
+    //   size="lg"
+    //   onClick={handleMoveNext}
+    //   className={classes.desktopButton}
+    // >
+    //   <ArrowLeft size={24} />
+    // </ActionIcon>
+    // {linkedRepoCard(data[currentIndex])}
+    // <ActionIcon
+    //   variant="outline"
+    //   radius="xl"
+    //   size="lg"
+    //   onClick={handleMovePrevious}
+    //   className={classes.desktopButton}
+    // >
+    //   <ArrowRight size={24} />
+    // </ActionIcon>
+    // <div className={classes.mobileButtons}>
+    //   <ActionIcon
+    //     variant="outline"
+    //     radius="xl"
+    //     size="lg"
+    //     onClick={handleMoveNext}
+    //   >
+    //     <ArrowLeft size={24} />
+    //   </ActionIcon>
+    //   <ActionIcon
+    //     variant="outline"
+    //     radius="xl"
+    //     size="lg"
+    //     onClick={handleMovePrevious}
+    //   >
+    //     <ArrowRight size={24} />
+    //   </ActionIcon>
+    // </div> */}
+    // </div>
   );
 };
 

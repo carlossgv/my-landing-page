@@ -14,7 +14,16 @@ type Props = {
 const useStyles = createStyles((theme) => ({
   root: {
     ['.swiper-button-next, .swiper-button-prev']: {
-      color: theme.colors.mutedText[3],
+      color: theme.colors.mutedText[0],
+      [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+        paddingBottom: 80,
+      },
+    },
+    ['.swiper-button-next']: {
+      right: 0,
+    },
+    ['.swiper-button-prev']: {
+      left: 0,
     },
   },
 }));

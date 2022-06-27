@@ -7,12 +7,11 @@ import {
   Button,
 } from '@mantine/core';
 import { useRef } from 'react';
-import pageData from '../../utils/page-data';
 import InternalAnchor from '../InternalAnchor/InternalAnchor';
 
 const useStyles = createStyles((theme) => ({
   root: {
-    background: theme.colors.backgroundPrimary[4],
+    background: theme.colors.backgroundPrimary[0],
     border: 'none',
   },
   header: {
@@ -36,7 +35,7 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
   },
   link: {
-    color: 'white',
+    color: theme.colors.text[0],
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'none',
