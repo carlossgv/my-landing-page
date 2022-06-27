@@ -4,7 +4,7 @@ import { TechStackData } from '../../utils/page-data';
 import TechCard from '../common/TechCard/TechCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Autoplay, Navigation } from 'swiper';
+import { Autoplay } from 'swiper';
 import { createStyles } from '@mantine/core';
 
 type Props = {
@@ -45,7 +45,7 @@ function TechStackCarousel({ logos }: Props) {
   return (
     <Swiper
       className={classes.root}
-      modules={[Autoplay, Navigation]}
+      modules={[Autoplay]}
       slidesPerView={1}
       breakpoints={{
         800: {
@@ -60,7 +60,6 @@ function TechStackCarousel({ logos }: Props) {
         pauseOnMouseEnter: true,
       }}
       loop
-      navigation
     >
       {cards}
     </Swiper>
