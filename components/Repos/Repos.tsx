@@ -1,7 +1,6 @@
 import { Container, createStyles, Title } from '@mantine/core';
-import ReposCarousel from '../ReposCarousel/ReposCarousel';
 import PageData from '../../utils/page-data';
-import Link from 'next/link';
+import ReposCarousel from '../ReposCarousel/ReposCarousel';
 
 const reposData = PageData.repos;
 
