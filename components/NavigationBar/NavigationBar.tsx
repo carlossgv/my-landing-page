@@ -77,7 +77,10 @@ const NavigationBar = ({
           <InternalAnchor hrefId={'repos'} className={classes.link}>
             <Text transform="uppercase">{PROJECTS}</Text>
           </InternalAnchor>
-          <Text
+          <InternalAnchor hrefId={'contact-form'} className={classes.link}>
+            <Text transform="uppercase">{CONTACT}</Text>
+          </InternalAnchor>
+          {/* <Text
             transform="uppercase"
             className={classes.link}
             variant="link"
@@ -85,7 +88,7 @@ const NavigationBar = ({
             href="#"
           >
             {CONTACT}
-          </Text>
+          </Text> */}
         </Container>
         <div className={classes.buttonContainer}>
           <Button

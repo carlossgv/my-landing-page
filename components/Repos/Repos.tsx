@@ -7,7 +7,7 @@ const reposData = PageData.repos;
 
 const useStyles = createStyles((theme) => ({
   root: {
-    height: '100vh',
+    minHeight: '100vh',
     width: '100%',
     backgroundColor: theme.colors.backgroundPrimary[0],
     display: 'flex',

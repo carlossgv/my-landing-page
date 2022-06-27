@@ -137,8 +137,8 @@ const pageData: PageData = {
       es: '¡Empecemos!',
     },
     title: {
-      en: 'Get A Free Consultation',
-      es: 'Consulta Gratuita',
+      en: 'Get A Free\n Consultation',
+      es: 'Consulta\n Gratuita',
     },
     nameLabel: {
       en: 'Name',
@@ -157,8 +157,8 @@ const pageData: PageData = {
       es: 'Enviar Mensaje',
     },
     additionalEmail: {
-      en: 'or send me an email at',
-      es: 'o envíeme un email a',
+      en: 'OR EMAIL',
+      es: 'O EMAIL',
     },
   },
 };

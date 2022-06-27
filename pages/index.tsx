@@ -10,6 +10,7 @@ import { ArrowUp } from 'tabler-icons-react';
 import ReposAndStack from '../components/Repos/Repos';
 import pageData from '../utils/page-data';
 import { useEffect, useRef, useState } from 'react';
+import ContactForm from '../components/ContactForm/ContactForm';
 
 const navigationData = pageData.navigationBar;
 
@@ -42,16 +43,6 @@ const Home: NextPage = () => {
     setNavHeight(ref.current.clientHeight);
   }, []);
 
-  // Sidebar
-  // Navbar
-  // Intro
-  // GeneralInfo
-  // Repos
-  // Stack
-  // Offering
-  // ContactForm
-  // Footer
-
   const handleUpdateLocale = (newLocale: string) => {
     const validLocale = localeCheck(newLocale);
     router.push(router.asPath, undefined, { locale: validLocale });
@@ -66,14 +57,15 @@ const Home: NextPage = () => {
           data={navigationData}
         ></NavigationBar>
       </div>
-      <Intro navHeight={navHeight} locale={validLocale}></Intro>
-      <PersonalInfo></PersonalInfo>
+      <Intro navHeight={navHeight} locale={validLocale} />
+      <PersonalInfo />
       <InternalAnchor hrefId={'home'} className={classes.goUpButton}>
         <ActionIcon variant="outline" radius="xl" size="lg">
           <ArrowUp size={24} />
         </ActionIcon>
       </InternalAnchor>
-      <ReposAndStack locale={validLocale}></ReposAndStack>
+      <ReposAndStack locale={validLocale} />
+      <ContactForm locale={validLocale} />
     </div>
   );
 };

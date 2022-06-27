@@ -31,6 +31,7 @@ export default function App(props: AppProps) {
             sidebarBackground: ['#080A12'],
             mutedText: ['#A9AFC3'],
             text: ['#C1C2C5'],
+            error: ['#FA5252'],
           },
           headings: {
             fontFamily: 'Poppins, sans-serif',
