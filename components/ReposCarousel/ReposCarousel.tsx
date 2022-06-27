@@ -1,5 +1,4 @@
 import { createStyles } from '@mantine/core';
-import { useState } from 'react';
 import RepoCard from '../common/RepoCard/RepoCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -40,11 +39,10 @@ const useStyles = createStyles((theme) => ({
 
 const ReposCarousel = ({ data, locale }: { data: any[]; locale: string }) => {
   const { classes } = useStyles();
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const repoCards = data.map((cardData) => {
     return (
-      <SwiperSlide key={`repo-card-${currentIndex}`}>
+      <SwiperSlide key={`repo-card-${cardData.title}`}>
         <a
           href={cardData.link}
           target="_blank"
