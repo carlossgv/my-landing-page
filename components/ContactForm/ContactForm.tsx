@@ -103,6 +103,11 @@ type Props = {
   locale: string;
 };
 
+type InputProps = {
+  text: string;
+  error: boolean | string;
+};
+
 const ContactForm = ({ locale }: Props) => {
   const { classes } = useStyles();
 
@@ -114,9 +119,12 @@ const ContactForm = ({ locale }: Props) => {
   const BUTTON_TEXT = pageData.contactMe.buttonText[locale];
   const ADDITIONAL_EMAIL = pageData.contactMe.additionalEmail[locale];
 
-  const [name, setName] = useState({ text: '', error: false });
-  const [email, setEmail] = useState({ text: '', error: false });
-  const [message, setMessage] = useState({ text: '', error: false });
+  const [name, setName] = useState<InputProps>({ text: '', error: false });
+  const [email, setEmail] = useState<InputProps>({ text: '', error: false });
+  const [message, setMessage] = useState<InputProps>({
+    text: '',
+    error: false,
+  });
 
   const handleSubmit = () => {
     console.log(name, email, message);
