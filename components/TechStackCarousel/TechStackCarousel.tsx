@@ -4,7 +4,7 @@ import { TechStackData } from '../../utils/page-data';
 import TechCard from '../common/TechCard/TechCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Autoplay, EffectFade, Navigation } from 'swiper';
+import { Autoplay, Navigation } from 'swiper';
 import { createStyles } from '@mantine/core';
 
 type Props = {
@@ -15,7 +15,6 @@ const useStyles = createStyles((theme) => ({
   root: {
     ['.swiper-button-next, .swiper-button-prev']: {
       color: theme.colors.mutedText[3],
-      //   color: 'transparent',
     },
   },
 }));
@@ -41,13 +40,16 @@ function TechStackCarousel({ logos }: Props) {
       slidesPerView={1}
       breakpoints={{
         800: {
-          slidesPerView: 3,
+          slidesPerView: 2,
         },
         1200: {
-          slidesPerView: 4,
+          slidesPerView: 3,
         },
       }}
-      autoplay
+      autoplay={{
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
       loop
       navigation
     >
