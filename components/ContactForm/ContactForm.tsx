@@ -7,9 +7,11 @@ import {
   Title,
   Text,
   LoadingOverlay,
+  Notification,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
+import { Check } from 'tabler-icons-react';
 import pageData from '../../utils/page-data';
 
 const useStyles = createStyles((theme) => ({
@@ -106,15 +108,13 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
   },
+  alert: {
+    marginTop: 20,
+  },
 }));
 
 type Props = {
   locale: string;
-};
-
-type InputProps = {
-  text: string;
-  error: boolean | string;
 };
 
 const ContactForm = ({ locale }: Props) => {
@@ -131,6 +131,7 @@ const ContactForm = ({ locale }: Props) => {
   const INVALID_EMAIL_ERROR = pageData.contactMe.invalidEmailError[locale];
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [successAlert, setSuccessAlert] = useState<boolean>(false);
 
   const form = useForm({
     initialValues: {
@@ -167,6 +168,7 @@ const ContactForm = ({ locale }: Props) => {
         }),
       });
       form.reset();
+      setSuccessAlert(true);
     } catch (error) {
       console.log(error);
     }
@@ -231,6 +233,18 @@ const ContactForm = ({ locale }: Props) => {
                   </a>
                 </div>
               </div>
+              {successAlert && (
+                <Notification
+                  icon={<Check size={18} />}
+                  color="teal"
+                  title="Email sent!"
+                  className={classes.alert}
+                  onClose={() => setSuccessAlert(false)}
+                >
+                  Thanks for contacting! I&apos;ll contact you as soon as
+                  possible.
+                </Notification>
+              )}
             </form>
           </Container>
         </Container>
