@@ -126,7 +126,7 @@ const ContactForm = ({ locale }: Props) => {
     error: false,
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(name, email, message);
     // set all fields to error false but keep the text
     setName({ text: name.text, error: false });
@@ -157,7 +157,24 @@ const ContactForm = ({ locale }: Props) => {
     }
 
     // send email
-    console.log('email sent');
+    console.log('trying to send email');
+    console.log('TO: ', process.env.SENDGRID_FROM_EMAIL);
+    console.log('SUBJECT: ', process.env.SENDGRID_SUBJECT);
+
+    try {
+      await fetch('api/sendgrid', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: name.text,
+          from: email.text,
+          to: process.env.SENDGRID_FROM_EMAIL,
+          subject: process.env.SENDGRID_SUBJECT,
+          text: message.text,
+        }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

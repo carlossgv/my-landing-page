@@ -1,5 +1,7 @@
 import sgMail from '@sendgrid/mail';
 
+sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+
 type MailPayloadType = {
   to: string;
   from: string;
@@ -16,17 +18,19 @@ const msg = {
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
 
-const sendMail = async (msg: MailPayloadType) => {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+const sendEmail = async (req, res) => {
+  const body = JSON.parse(req.body);
+
+  console.log('BODY IN SENDEMAIL: ', body);
+
   try {
-    await sgMail.send(msg);
+    const response = await sgMail.send(body);
+    console.log('Mail sent', response);
   } catch (error) {
     console.log(error);
   }
 
-  console.log('Mail sent');
+  res.status(200).json({ message: 'Mail sent' });
 };
 
-sendMail(msg);
-
-export default sendMail;
+export default sendEmail;
