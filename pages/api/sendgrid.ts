@@ -2,7 +2,7 @@ import sgMail from '@sendgrid/mail';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
-const sendEmail = async (req, res) => {
+const sendEmail = async (req: any, res: any) => {
   let body = JSON.parse(req.body);
 
   body = {
