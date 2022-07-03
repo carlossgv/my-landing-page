@@ -34,24 +34,26 @@ const useStyles = createStyles((theme) => ({
   },
   input: {
     '& input': {
+      border: 'none',
       borderBottom: `1px solid ${theme.colors.mutedText[0]}`,
       marginBottom: 10,
+      borderWidth: 1,
+    },
+    '& .mantine-TextInput-invalid': {
+      color: theme.colors.error[0],
+      border: 'none',
+      borderBottom: `1px solid ${theme.colors.error[0]}`,
     },
     '& textarea': {
+      border: 'none',
       borderBottom: `1px solid ${theme.colors.mutedText[0]}`,
       marginBottom: 10,
+      borderWidth: 1,
     },
-  },
-  inputError: {
-    '& input': {
-      borderBottom: `1px solid ${theme.colors.error[0]}`,
+    '& .mantine-Textarea-invalid': {
       color: theme.colors.error[0],
-      marginBottom: 10,
-    },
-    '& textarea': {
+      border: 'none',
       borderBottom: `1px solid ${theme.colors.error[0]}`,
-      color: theme.colors.error[0],
-      marginBottom: 10,
     },
   },
   topInputContainer: {
@@ -190,11 +192,13 @@ const ContactForm = ({ locale }: Props) => {
               <TextInput
                 placeholder={NAME_LABEL}
                 variant={'unstyled'}
+                className={classes.input}
                 {...form.getInputProps('name')}
               />
               <TextInput
                 placeholder={EMAIL_LABEL}
                 variant={'unstyled'}
+                className={classes.input}
                 {...form.getInputProps('email')}
               />
             </div>
@@ -203,6 +207,7 @@ const ContactForm = ({ locale }: Props) => {
               variant={'unstyled'}
               autosize
               minRows={5}
+              className={classes.input}
               {...form.getInputProps('message')}
             />
             <div className={classes.buttonContainer}>
