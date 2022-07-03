@@ -33,6 +33,7 @@ const useStyles = createStyles((theme) => ({
     color: theme.colors.accent[0],
   },
   input: {
+    width: '100%',
     '& input': {
       border: 'none',
       borderBottom: `1px solid ${theme.colors.mutedText[0]}`,
