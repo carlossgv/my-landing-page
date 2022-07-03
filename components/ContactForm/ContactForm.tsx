@@ -13,9 +13,13 @@ import { useState } from 'react';
 import pageData from '../../utils/page-data';
 
 const useStyles = createStyles((theme) => ({
+  containerWrapper: {
+    width: '100vw',
+    backgroundColor: theme.colors.backgroundPrimary[0],
+  },
   root: {
     height: '100vh',
-    backgroundColor: theme.colors.backgroundSecondary[0],
+    backgroundColor: theme.colors.backgroundPrimary[0],
     paddingTop: 10,
     display: 'flex',
     flexDirection: 'column',
@@ -170,66 +174,68 @@ const ContactForm = ({ locale }: Props) => {
   };
 
   return (
-    <a id="contact-form">
-      <Container
-        className={classes.root}
-        size={'xl'}
-        style={{ position: 'relative' }}
-      >
-        <LoadingOverlay visible={isLoading} />
-        <Container className={classes.content}>
-          <form
-            onSubmit={form.onSubmit((values) =>
-              form.validate().hasErrors ? null : sendValidatedEmail(values)
-            )}
-          >
-            <p className={classes.preTitle}>---- {PRE_TITLE}</p>
-            <Title order={3} style={{ marginBottom: 40 }}>
-              {TITLE}
-              <span className={classes.titleDot}> .</span>
-            </Title>
+    <div className={classes.containerWrapper}>
+      <a id="contact-form">
+        <Container
+          className={classes.root}
+          size={'xl'}
+          style={{ position: 'relative' }}
+        >
+          <LoadingOverlay visible={isLoading} />
+          <Container className={classes.content}>
+            <form
+              onSubmit={form.onSubmit((values) =>
+                form.validate().hasErrors ? null : sendValidatedEmail(values)
+              )}
+            >
+              <p className={classes.preTitle}>---- {PRE_TITLE}</p>
+              <Title order={3} style={{ marginBottom: 40 }}>
+                {TITLE}
+                <span className={classes.titleDot}> .</span>
+              </Title>
 
-            <div className={classes.topInputContainer}>
-              <TextInput
-                placeholder={NAME_LABEL}
-                variant={'unstyled'}
-                className={classes.input}
-                {...form.getInputProps('name')}
-              />
-              <TextInput
-                placeholder={EMAIL_LABEL}
-                variant={'unstyled'}
-                className={classes.input}
-                {...form.getInputProps('email')}
-              />
-            </div>
-            <Textarea
-              placeholder={MESSAGE_LABEL}
-              variant={'unstyled'}
-              autosize
-              minRows={5}
-              className={classes.input}
-              {...form.getInputProps('message')}
-            />
-            <div className={classes.buttonContainer}>
-              <Button size="lg" className={classes.button} type="submit">
-                {BUTTON_TEXT}
-              </Button>
-              <div className={classes.textContainer}>
-                <Text className={classes.preTitle} style={{ fontSize: 14 }}>
-                  {ADDITIONAL_EMAIL}
-                </Text>
+              <div className={classes.topInputContainer}>
+                <TextInput
+                  placeholder={NAME_LABEL}
+                  variant={'unstyled'}
+                  className={classes.input}
+                  {...form.getInputProps('name')}
+                />
+                <TextInput
+                  placeholder={EMAIL_LABEL}
+                  variant={'unstyled'}
+                  className={classes.input}
+                  {...form.getInputProps('email')}
+                />
               </div>
-              <div className={classes.linkContainer}>
-                <a className={classes.link} href="mailto:carlossgv@gmail.com">
-                  CARLOSSGV@GMAIL.COM
-                </a>
+              <Textarea
+                placeholder={MESSAGE_LABEL}
+                variant={'unstyled'}
+                autosize
+                minRows={5}
+                className={classes.input}
+                {...form.getInputProps('message')}
+              />
+              <div className={classes.buttonContainer}>
+                <Button size="lg" className={classes.button} type="submit">
+                  {BUTTON_TEXT}
+                </Button>
+                <div className={classes.textContainer}>
+                  <Text className={classes.preTitle} style={{ fontSize: 14 }}>
+                    {ADDITIONAL_EMAIL}
+                  </Text>
+                </div>
+                <div className={classes.linkContainer}>
+                  <a className={classes.link} href="mailto:carlossgv@gmail.com">
+                    CARLOSSGV@GMAIL.COM
+                  </a>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </Container>
         </Container>
-      </Container>
-    </a>
+      </a>
+    </div>
   );
 };
 
