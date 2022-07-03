@@ -60,7 +60,7 @@ const pageData: PageData = {
   intro: {
     title: {
       en: 'How I Get It Done',
-      es: 'Cómo lo hago',
+      es: 'Como hacerlo posible',
     },
     description: {
       en: 'Harum trium sententiarum nulli prorsus assentior. Nec enim illa prima vera est,odum in se quisque sit, sic in amicum sit animatus',
@@ -159,6 +159,14 @@ const pageData: PageData = {
     additionalEmail: {
       en: 'OR EMAIL',
       es: 'O EMAIL',
+    },
+    emptyFieldError: {
+      en: 'Please fill out this field',
+      es: 'Favor llenar este campo',
+    },
+    invalidEmailError: {
+      en: 'Invalid email',
+      es: 'Email inválido',
     },
   },
 };

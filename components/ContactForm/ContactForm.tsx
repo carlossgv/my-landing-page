@@ -6,7 +6,9 @@ import {
   TextInput,
   Title,
   Text,
+  LoadingOverlay,
 } from '@mantine/core';
+import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import pageData from '../../utils/page-data';
 
@@ -118,119 +120,107 @@ const ContactForm = ({ locale }: Props) => {
   const MESSAGE_LABEL = pageData.contactMe.messageLabel[locale];
   const BUTTON_TEXT = pageData.contactMe.buttonText[locale];
   const ADDITIONAL_EMAIL = pageData.contactMe.additionalEmail[locale];
+  const EMPTY_ERROR = pageData.contactMe.emptyFieldError[locale];
+  const INVALID_EMAIL_ERROR = pageData.contactMe.invalidEmailError[locale];
 
-  const [name, setName] = useState<InputProps>({ text: '', error: false });
-  const [email, setEmail] = useState<InputProps>({ text: '', error: false });
-  const [message, setMessage] = useState<InputProps>({
-    text: '',
-    error: false,
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const form = useForm({
+    initialValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+
+    validate: {
+      name: (value) => (value.length < 1 ? EMPTY_ERROR : null),
+      message: (value) => (value.length < 1 ? EMPTY_ERROR : null),
+      email: (value) =>
+        value.length < 1
+          ? EMPTY_ERROR
+          : /^\S+@\S+$/.test(value)
+          ? null
+          : INVALID_EMAIL_ERROR,
+    },
   });
 
-  const handleSubmit = async () => {
-    console.log(name, email, message);
-    // set all fields to error false but keep the text
-    setName({ text: name.text, error: false });
-    setEmail({ text: email.text, error: false });
-    setMessage({ text: message.text, error: false });
-
-    // validate if email is valid
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.text)) {
-      setEmail({ ...email, error: 'Invalid email' });
-    }
-
-    // validate if any of the fields is empty
-    if (name.text === '' || email.text === '' || message.text === '') {
-      if (name.text === '') {
-        setName({ ...name, error: 'This field is required' });
-      }
-      if (email.text === '') {
-        setEmail({ ...email, error: 'This field is required' });
-      }
-      if (message.text === '') {
-        setMessage({ ...message, error: 'This field is required' });
-      }
-    }
-
-    // check if there are any errors
-    if (name.error || email.error || message.error) {
-      return;
-    }
-
-    // send email
-    console.log('trying to send email');
-    console.log('TO: ', process.env.SENDGRID_FROM_EMAIL);
-    console.log('SUBJECT: ', process.env.SENDGRID_SUBJECT);
-
+  const sendValidatedEmail = async (values: {
+    name: string;
+    email: string;
+    message: string;
+  }) => {
+    console.log(values);
     try {
+      setIsLoading(true);
       await fetch('api/sendgrid', {
         method: 'POST',
         body: JSON.stringify({
-          name: name.text,
-          html: `FROM: ${email.text} \n  MESSAGE: ${message.text}`,
+          name: values.name,
+          html: `FROM: ${values.email} \n  MESSAGE: ${values.message}`,
         }),
       });
+      form.reset();
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
   return (
     <a id="contact-form">
-      <Container className={classes.root} size={'xl'}>
+      <Container
+        className={classes.root}
+        size={'xl'}
+        style={{ position: 'relative' }}
+      >
+        <LoadingOverlay visible={isLoading} />
         <Container className={classes.content}>
-          <p className={classes.preTitle}>---- {PRE_TITLE}</p>
-          <Title order={3} style={{ marginBottom: 40 }}>
-            {TITLE}
-            <span className={classes.titleDot}> .</span>
-          </Title>
-          <div className={classes.topInputContainer}>
-            <TextInput
-              placeholder={NAME_LABEL}
-              required
-              className={name.error ? classes.inputError : classes.input}
-              variant={'unstyled'}
-              value={name.text}
-              onChange={(e) => setName({ ...name, text: e.target.value })}
-              type="text"
-              error={name.error}
-            />
-            <TextInput
-              placeholder={EMAIL_LABEL}
-              required
-              className={name.error ? classes.inputError : classes.input}
-              variant={'unstyled'}
-              value={email.text}
-              onChange={(e) => setEmail({ ...email, text: e.target.value })}
-              type="email"
-              error={email.error}
-            />
-          </div>
-          <Textarea
-            placeholder={MESSAGE_LABEL}
-            required
-            className={name.error ? classes.inputError : classes.input}
-            variant={'unstyled'}
-            value={message.text}
-            onChange={(e) => setMessage({ ...message, text: e.target.value })}
-            minRows={5}
-            autosize
-            error={message.error}
-          />
-          <div className={classes.buttonContainer}>
-            <Button size="lg" className={classes.button} onClick={handleSubmit}>
-              {BUTTON_TEXT}
-            </Button>
-            <div className={classes.textContainer}>
-              <Text className={classes.preTitle} style={{ fontSize: 14 }}>
-                {ADDITIONAL_EMAIL}
-              </Text>
+          <form
+            onSubmit={form.onSubmit((values) =>
+              form.validate().hasErrors ? null : sendValidatedEmail(values)
+            )}
+          >
+            <p className={classes.preTitle}>---- {PRE_TITLE}</p>
+            <Title order={3} style={{ marginBottom: 40 }}>
+              {TITLE}
+              <span className={classes.titleDot}> .</span>
+            </Title>
+
+            <div className={classes.topInputContainer}>
+              <TextInput
+                placeholder={NAME_LABEL}
+                variant={'unstyled'}
+                {...form.getInputProps('name')}
+              />
+              <TextInput
+                placeholder={EMAIL_LABEL}
+                variant={'unstyled'}
+                {...form.getInputProps('email')}
+              />
             </div>
-            <div className={classes.linkContainer}>
-              <a className={classes.link} href="mailto:carlossgv@gmail.com">
-                CARLOSSGV@GMAIL.COM
-              </a>
+            <Textarea
+              placeholder={MESSAGE_LABEL}
+              variant={'unstyled'}
+              autosize
+              minRows={5}
+              {...form.getInputProps('message')}
+            />
+            <div className={classes.buttonContainer}>
+              <Button size="lg" className={classes.button} type="submit">
+                {BUTTON_TEXT}
+              </Button>
+              <div className={classes.textContainer}>
+                <Text className={classes.preTitle} style={{ fontSize: 14 }}>
+                  {ADDITIONAL_EMAIL}
+                </Text>
+              </div>
+              <div className={classes.linkContainer}>
+                <a className={classes.link} href="mailto:carlossgv@gmail.com">
+                  CARLOSSGV@GMAIL.COM
+                </a>
+              </div>
             </div>
-          </div>
+          </form>
         </Container>
       </Container>
     </a>
