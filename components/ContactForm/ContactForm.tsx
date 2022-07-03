@@ -166,10 +166,7 @@ const ContactForm = ({ locale }: Props) => {
         method: 'POST',
         body: JSON.stringify({
           name: name.text,
-          from: email.text,
-          to: process.env.SENDGRID_FROM_EMAIL,
-          subject: process.env.SENDGRID_SUBJECT,
-          text: message.text,
+          html: `FROM: ${email.text} \n  MESSAGE: ${message.text}`,
         }),
       });
     } catch (error) {

@@ -10,24 +10,22 @@ type MailPayloadType = {
   html: string;
 };
 
-const msg = {
-  to: 'carlossgv@gmail.com', // Change to your recipient
-  from: 'carlossgv@gmail.com', // Change to your verified sender
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-};
-
 const sendEmail = async (req, res) => {
-  const body = JSON.parse(req.body);
+  let body = JSON.parse(req.body);
 
+  body = {
+    ...body,
+    from: process.env.SENDGRID_FROM_EMAIL,
+    to: process.env.SENDGRID_FROM_EMAIL,
+    subject: process.env.SENDGRID_SUBJECT,
+  };
   console.log('BODY IN SENDEMAIL: ', body);
 
   try {
     const response = await sgMail.send(body);
     console.log('Mail sent', response);
   } catch (error) {
-    console.log(error);
+    console.log('ERROR: ', JSON.stringify(error, null, 2));
   }
 
   res.status(200).json({ message: 'Mail sent' });
