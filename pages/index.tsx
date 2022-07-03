@@ -59,13 +59,13 @@ const Home: NextPage = () => {
       </div>
       <Intro navHeight={navHeight} locale={validLocale} />
       <PersonalInfo />
+      <ReposAndStack locale={validLocale} />
+      <ContactForm locale={validLocale} />
       <InternalAnchor hrefId={'home'} className={classes.goUpButton}>
         <ActionIcon variant="outline" radius="xl" size="lg">
           <ArrowUp size={24} />
         </ActionIcon>
       </InternalAnchor>
-      <ReposAndStack locale={validLocale} />
-      <ContactForm locale={validLocale} />
     </div>
   );
 };
