@@ -129,6 +129,8 @@ const ContactForm = ({ locale }: Props) => {
   const ADDITIONAL_EMAIL = pageData.contactMe.additionalEmail[locale];
   const EMPTY_ERROR = pageData.contactMe.emptyFieldError[locale];
   const INVALID_EMAIL_ERROR = pageData.contactMe.invalidEmailError[locale];
+  const EMAIL_SENT_TITLE = pageData.contactMe.emailSentTitle[locale];
+  const EMAIL_SENT_MESSAGE = pageData.contactMe.emailSentMessage[locale];
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [successAlert, setSuccessAlert] = useState<boolean>(false);
@@ -237,12 +239,11 @@ const ContactForm = ({ locale }: Props) => {
                 <Notification
                   icon={<Check size={18} />}
                   color="teal"
-                  title="Email sent!"
+                  title={EMAIL_SENT_TITLE}
                   className={classes.alert}
                   onClose={() => setSuccessAlert(false)}
                 >
-                  Thanks for contacting! I&apos;ll contact you as soon as
-                  possible.
+                  {EMAIL_SENT_MESSAGE}
                 </Notification>
               )}
             </form>

@@ -168,6 +168,14 @@ const pageData: PageData = {
       en: 'Invalid email',
       es: 'Email inválido',
     },
+    emailSentTitle: {
+      en: 'Email sent!',
+      es: '¡Email enviado!',
+    },
+    emailSentMessage: {
+      en: `Thanks for reaching out! I'll contact you as soon as possible.`,
+      es: '¡Muchas gracias! Te contactaré de vuelta lo más rápido posible.',
+    },
   },
 };
 
