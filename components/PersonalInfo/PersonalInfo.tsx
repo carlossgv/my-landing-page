@@ -76,26 +76,32 @@ const PersonalInfo = () => {
 
   const buttons = buttonsData.map((button, index) => {
     return (
-      <ActionIcon
-        onClick={() => {
-          window.open(button.link, '_blank');
-        }}
+      <a
+        href={button.link}
+        target="_blank"
+        rel="noopener noreferrer"
         key={index}
-        radius="xl"
-        variant="filled"
-        className={classes.button}
-        style={
-          button.altText === 'Github'
-            ? {
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-end',
-              }
-            : {}
-        }
       >
-        <Image src={button.icon} alt={button.altText}></Image>
-      </ActionIcon>
+        <ActionIcon
+          onClick={() => {
+            window.open(button.link, '_blank');
+          }}
+          radius="xl"
+          variant="filled"
+          className={classes.button}
+          style={
+            button.altText === 'Github'
+              ? {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                }
+              : {}
+          }
+        >
+          <Image src={button.icon} alt={button.altText}></Image>
+        </ActionIcon>
+      </a>
     );
   });
 
