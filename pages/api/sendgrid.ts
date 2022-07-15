@@ -1,8 +1,9 @@
 import sgMail from '@sendgrid/mail';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
-const sendEmail = async (req: any, res: any) => {
+const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
   let body = JSON.parse(req.body);
 
   body = {
@@ -11,11 +12,9 @@ const sendEmail = async (req: any, res: any) => {
     to: process.env.SENDGRID_FROM_EMAIL,
     subject: process.env.SENDGRID_SUBJECT,
   };
-  console.log('BODY IN SENDEMAIL: ', body);
 
   try {
-    const response = await sgMail.send(body);
-    console.log('Mail sent', response);
+    await sgMail.send(body);
   } catch (error) {
     console.log('ERROR: ', JSON.stringify(error, null, 2));
   }

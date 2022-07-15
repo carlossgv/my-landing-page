@@ -14,7 +14,7 @@ import ContactForm from '../components/ContactForm/ContactForm';
 
 const navigationData = pageData.navigationBar;
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   root: {
     height: '100%',
     padding: '0 !important',
@@ -39,8 +39,7 @@ const Home: NextPage = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    // @ts-ignore: error handled
-    setNavHeight(ref.current.clientHeight);
+    setNavHeight(ref.current!.clientHeight) as unknown;
   }, []);
 
   const handleUpdateLocale = (newLocale: string) => {
