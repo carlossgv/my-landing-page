@@ -16,7 +16,7 @@ const navigationData = pageData.navigationBar;
 
 const useStyles = createStyles(() => ({
   root: {
-    height: '100%',
+    overflowX: 'hidden',
     padding: '0 !important',
     display: 'flex',
     flexDirection: 'column',
@@ -36,10 +36,10 @@ const Home: NextPage = () => {
   const router = useRouter();
   const validLocale = localeCheck(router.locale);
   const [navHeight, setNavHeight] = useState(0);
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setNavHeight(ref.current!.clientHeight) as unknown;
+    setNavHeight(ref.current!.clientHeight);
   }, []);
 
   const handleUpdateLocale = (newLocale: string) => {
