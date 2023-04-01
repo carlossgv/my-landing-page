@@ -32,10 +32,10 @@ type PageData = {
   };
   repos: {
     [key: string]:
-    | {
-      [key: string]: string;
-    }
-    | RepoData[];
+      | {
+          [key: string]: string;
+        }
+      | RepoData[];
   };
   techStack: {
     [key: string]: {
@@ -49,7 +49,7 @@ type PageData = {
   };
 };
 
-type RepoData = {
+export type RepoData = {
   [key: string]: { [key: string]: string } | string | any;
 };
 
