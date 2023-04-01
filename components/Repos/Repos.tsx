@@ -39,7 +39,9 @@ const useStyles = createStyles((theme) => ({
 const ReposAndStack = ({ locale }: { locale: string }) => {
   const { classes } = useStyles();
 
+  // @ts-ignore
   const TITLE = PageData.repos.title[locale];
+  // @ts-ignore
   const SUBTITLE = PageData.repos.subtitle[locale];
 
   return (
