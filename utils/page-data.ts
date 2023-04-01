@@ -49,7 +49,7 @@ type PageData = {
   };
 };
 
-type RepoData = {
+export type RepoData = {
   [key: string]: { [key: string]: string } | string | any;
 };
 
