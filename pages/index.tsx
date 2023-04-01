@@ -1,30 +1,30 @@
-import { ActionIcon, createStyles } from '@mantine/core';
-import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import InternalAnchor from '../components/InternalAnchor/InternalAnchor';
-import Intro from '../components/Intro/Intro';
-import NavigationBar from '../components/NavigationBar/NavigationBar';
-import PersonalInfo from '../components/PersonalInfo/PersonalInfo';
-import { localeCheck } from '../utils/locale-check';
-import { ArrowUp } from 'tabler-icons-react';
-import ReposAndStack from '../components/Repos/Repos';
-import pageData from '../utils/page-data';
-import { useEffect, useRef, useState } from 'react';
-import ContactForm from '../components/ContactForm/ContactForm';
+import { ActionIcon, createStyles } from "@mantine/core";
+import type { NextPage } from "next";
+import { useRouter } from "next/router";
+import InternalAnchor from "../components/InternalAnchor/InternalAnchor";
+import Intro from "../components/Intro/Intro";
+import NavigationBar from "../components/NavigationBar/NavigationBar";
+import PersonalInfo from "../components/PersonalInfo/PersonalInfo";
+import { localeCheck } from "../utils/locale-check";
+import { ArrowUp } from "tabler-icons-react";
+import ReposAndStack from "../components/Repos/Repos";
+import pageData from "../utils/page-data";
+import { useEffect, useRef, useState } from "react";
+import ContactForm from "../components/ContactForm/ContactForm";
 
 const navigationData = pageData.navigationBar;
 
 const useStyles = createStyles(() => ({
   root: {
-    overflowX: 'hidden',
-    padding: '0 !important',
-    display: 'flex',
-    flexDirection: 'column',
+    overflowX: "hidden",
+    padding: "0 !important",
+    display: "flex",
+    flexDirection: "column",
     rowGap: 0,
-    WebkitTapHighlightColor: 'transparent',
+    WebkitTapHighlightColor: "transparent",
   },
   goUpButton: {
-    position: 'fixed',
+    position: "fixed",
     bottom: 16,
     right: 16,
   },
@@ -57,10 +57,10 @@ const Home: NextPage = () => {
         ></NavigationBar>
       </div>
       <Intro navHeight={navHeight} locale={validLocale} />
-      <PersonalInfo />
+      <PersonalInfo locale={validLocale} />
       <ReposAndStack locale={validLocale} />
       <ContactForm locale={validLocale} />
-      <InternalAnchor hrefId={'home'} className={classes.goUpButton}>
+      <InternalAnchor hrefId={"home"} className={classes.goUpButton}>
         <ActionIcon variant="outline" radius="xl" size="lg">
           <ArrowUp size={24} />
         </ActionIcon>

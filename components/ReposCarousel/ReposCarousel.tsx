@@ -1,43 +1,50 @@
-import { createStyles } from '@mantine/core';
-import RepoCard from '../common/RepoCard/RepoCard';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper';
+import { createStyles } from "@mantine/core";
+import RepoCard from "../common/RepoCard/RepoCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
+import { RepoData } from "../../utils/page-data";
 
 const useStyles = createStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
     columnGap: 50,
-    alignItems: 'center',
+    alignItems: "center",
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      flexDirection: 'column',
+      flexDirection: "column",
     },
   },
   carousel: {
-    width: '100%',
-    ['.swiper-button-next, .swiper-button-prev']: {
+    width: "100%",
+    [".swiper-button-next, .swiper-button-prev"]: {
       color: theme.colors.mutedText[0],
       width: 10,
     },
   },
   desktopButton: {
-    display: 'block',
+    display: "block",
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      display: 'none',
+      display: "none",
     },
   },
   mobileButtons: {
-    display: 'none',
+    display: "none",
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      display: 'flex',
+      display: "flex",
       marginTop: 10,
       columnGap: 10,
     },
   },
 }));
 
-const ReposCarousel = ({ data, locale }: { data: any[]; locale: string }) => {
+const ReposCarousel = ({
+  data,
+  locale,
+}: {
+  data: RepoData[];
+  locale: string;
+}) => {
   const { classes } = useStyles();
 
   const repoCards = data.map((cardData) => {
@@ -47,7 +54,7 @@ const ReposCarousel = ({ data, locale }: { data: any[]; locale: string }) => {
           href={cardData.link}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ textDecoration: 'none' }}
+          style={{ textDecoration: "none" }}
         >
           <RepoCard
             imageUrl={cardData.imageUrl}
