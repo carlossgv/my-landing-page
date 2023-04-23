@@ -32,10 +32,10 @@ type PageData = {
   };
   repos: {
     [key: string]:
-      | {
-          [key: string]: string;
-        }
-      | RepoData[];
+    | {
+      [key: string]: string;
+    }
+    | RepoData[];
   };
   techStack: {
     [key: string]: {
@@ -226,6 +226,14 @@ Gracias a mi experiencia y formación diversa, aporto una perspectiva única al 
     emailSentMessage: {
       en: `Thanks for reaching out! I'll contact you as soon as possible.`,
       es: "¡Muchas gracias! Te contactaré de vuelta lo más rápido posible.",
+    },
+    emailErrorTitle: {
+      en: "Error sending email",
+      es: "Error enviando email",
+    },
+    emailErrorMessage: {
+      en: "Please try again later",
+      es: "Por favor intenta de nuevo más tarde",
     },
   },
 };

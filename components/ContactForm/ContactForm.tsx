@@ -8,78 +8,78 @@ import {
   Text,
   LoadingOverlay,
   Notification,
-} from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { useState } from 'react';
-import { Check } from 'tabler-icons-react';
-import pageData from '../../utils/page-data';
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { useState } from "react";
+import { Check } from "tabler-icons-react";
+import pageData from "../../utils/page-data";
 
 const useStyles = createStyles((theme) => ({
   containerWrapper: {
-    width: '100vw',
+    width: "100vw",
     backgroundColor: theme.colors.backgroundPrimary[0],
   },
   root: {
-    height: '100vh',
+    height: "100vh",
     backgroundColor: theme.colors.backgroundPrimary[0],
     paddingTop: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   content: {
     maxWidth: 555,
-    margin: '0',
+    margin: "0",
   },
   preTitle: {
     color: theme.colors.mutedText[0],
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   titleDot: {
     color: theme.colors.accent[0],
   },
   input: {
-    width: '100%',
-    '& input': {
-      border: 'none',
+    width: "100%",
+    "& input": {
+      border: "none",
       borderBottom: `1px solid ${theme.colors.mutedText[0]}`,
       marginBottom: 10,
       borderWidth: 1,
     },
-    '& .mantine-TextInput-invalid': {
+    "& .mantine-TextInput-invalid": {
       color: theme.colors.error[0],
-      border: 'none',
+      border: "none",
       borderBottom: `1px solid ${theme.colors.error[0]}`,
     },
-    '& textarea': {
-      border: 'none',
+    "& textarea": {
+      border: "none",
       borderBottom: `1px solid ${theme.colors.mutedText[0]}`,
       marginBottom: 10,
       borderWidth: 1,
     },
-    '& .mantine-Textarea-invalid': {
+    "& .mantine-Textarea-invalid": {
       color: theme.colors.error[0],
-      border: 'none',
+      border: "none",
       borderBottom: `1px solid ${theme.colors.error[0]}`,
     },
   },
   topInputContainer: {
-    display: 'flex',
-    alignContent: 'center',
+    display: "flex",
+    alignContent: "center",
     columnGap: 20,
     marginBottom: 20,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      flexDirection: 'column',
+      flexDirection: "column",
       rowGap: 10,
     },
   },
   buttonContainer: {
-    display: 'flex',
-    alignContent: 'center',
+    display: "flex",
+    alignContent: "center",
     columnGap: 20,
     marginTop: 40,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      flexDirection: 'column',
+      flexDirection: "column",
       rowGap: 20,
     },
   },
@@ -88,25 +88,25 @@ const useStyles = createStyles((theme) => ({
     borderRadius: 0,
 
     fontSize: 20,
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.colors.accent[0],
     },
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      width: '100%',
+      width: "100%",
     },
   },
   linkContainer: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   link: {
-    textDecoration: 'none',
+    textDecoration: "none",
     color: theme.colors.text[0],
   },
   textContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   alert: {
     marginTop: 20,
@@ -131,15 +131,18 @@ const ContactForm = ({ locale }: Props) => {
   const INVALID_EMAIL_ERROR = pageData.contactMe.invalidEmailError[locale];
   const EMAIL_SENT_TITLE = pageData.contactMe.emailSentTitle[locale];
   const EMAIL_SENT_MESSAGE = pageData.contactMe.emailSentMessage[locale];
+  const EMAIL_ERROR_TITLE = pageData.contactMe.emailErrorTitle[locale];
+  const EMAIL_ERROR_MESSAGE = pageData.contactMe.emailErrorMessage[locale];
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [successAlert, setSuccessAlert] = useState<boolean>(false);
+  const [errorAlert, setErrorAlert] = useState<boolean>(false);
 
   const form = useForm({
     initialValues: {
-      name: '',
-      email: '',
-      message: '',
+      name: "",
+      email: "",
+      message: "",
     },
 
     validate: {
@@ -149,8 +152,8 @@ const ContactForm = ({ locale }: Props) => {
         value.length < 1
           ? EMPTY_ERROR
           : /^\S+@\S+$/.test(value)
-          ? null
-          : INVALID_EMAIL_ERROR,
+            ? null
+            : INVALID_EMAIL_ERROR,
     },
   });
 
@@ -159,20 +162,27 @@ const ContactForm = ({ locale }: Props) => {
     email: string;
     message: string;
   }) => {
-    console.log(values);
     try {
       setIsLoading(true);
-      await fetch('api/sendgrid', {
-        method: 'POST',
+      setSuccessAlert(false);
+      setErrorAlert(false);
+      const response = await fetch("api/sendgrid", {
+        method: "POST",
         body: JSON.stringify({
           name: values.name,
           html: `FROM: ${values.email} \n  MESSAGE: ${values.message}`,
         }),
       });
+
       form.reset();
+
+      if (response.status !== 200) {
+        throw new Error("Error sending email");
+      }
+
       setSuccessAlert(true);
     } catch (error) {
-      console.log(error);
+      setErrorAlert(true);
     }
     setIsLoading(false);
   };
@@ -182,8 +192,8 @@ const ContactForm = ({ locale }: Props) => {
       <a id="contact-form">
         <Container
           className={classes.root}
-          size={'xl'}
-          style={{ position: 'relative' }}
+          size={"xl"}
+          style={{ position: "relative" }}
         >
           <LoadingOverlay visible={isLoading} />
           <Container className={classes.content}>
@@ -201,24 +211,24 @@ const ContactForm = ({ locale }: Props) => {
               <div className={classes.topInputContainer}>
                 <TextInput
                   placeholder={NAME_LABEL}
-                  variant={'unstyled'}
+                  variant={"unstyled"}
                   className={classes.input}
-                  {...form.getInputProps('name')}
+                  {...form.getInputProps("name")}
                 />
                 <TextInput
                   placeholder={EMAIL_LABEL}
-                  variant={'unstyled'}
+                  variant={"unstyled"}
                   className={classes.input}
-                  {...form.getInputProps('email')}
+                  {...form.getInputProps("email")}
                 />
               </div>
               <Textarea
                 placeholder={MESSAGE_LABEL}
-                variant={'unstyled'}
+                variant={"unstyled"}
                 autosize
                 minRows={5}
                 className={classes.input}
-                {...form.getInputProps('message')}
+                {...form.getInputProps("message")}
               />
               <div className={classes.buttonContainer}>
                 <Button size="lg" className={classes.button} type="submit">
@@ -244,6 +254,17 @@ const ContactForm = ({ locale }: Props) => {
                   onClose={() => setSuccessAlert(false)}
                 >
                   {EMAIL_SENT_MESSAGE}
+                </Notification>
+              )}
+              {errorAlert && (
+                <Notification
+                  icon={<Check size={18} />}
+                  color="red"
+                  title={EMAIL_ERROR_TITLE}
+                  className={classes.alert}
+                  onClose={() => setErrorAlert(false)}
+                >
+                  {EMAIL_ERROR_MESSAGE}
                 </Notification>
               )}
             </form>

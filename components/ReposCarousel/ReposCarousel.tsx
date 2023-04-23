@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { RepoData } from "../../utils/page-data";
+import { useEffect, useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -46,25 +47,29 @@ const ReposCarousel = ({
   locale: string;
 }) => {
   const { classes } = useStyles();
+  const [repoCards, setRepoCards] = useState<JSX.Element[]>([]);
 
-  const repoCards = data.map((cardData) => {
-    return (
-      <SwiperSlide key={`repo-card-${cardData.title}`}>
-        <a
-          href={cardData.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ textDecoration: "none" }}
-        >
-          <RepoCard
-            imageUrl={cardData.imageUrl}
-            title={cardData.title[locale]}
-            description={cardData.description[locale]}
-          />
-        </a>
-      </SwiperSlide>
-    );
-  });
+  useEffect(() => {
+    const cards = data.map((cardData) => {
+      return (
+        <SwiperSlide key={`repo-card-${cardData.title[locale]}`}>
+          <a
+            href={cardData.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
+            <RepoCard
+              imageUrl={cardData.imageUrl}
+              title={cardData.title[locale]}
+              description={cardData.description[locale]}
+            />
+          </a>
+        </SwiperSlide>
+      );
+    });
+    setRepoCards(cards);
+  }, [data, locale]);
 
   return (
     <Swiper
