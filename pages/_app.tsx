@@ -1,6 +1,6 @@
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
+import { AppProps } from "next/app";
+import Head from "next/head";
+import { MantineProvider } from "@mantine/core";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -13,29 +13,30 @@ export default function App(props: AppProps) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
 
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          colorScheme: 'dark',
-          fontFamily: 'Poppins, sans-serif',
+          colorScheme: "dark",
+          fontFamily: "Poppins, sans-serif",
           fontSizes: {
             md: 16,
           },
           colors: {
-            accent: ['#FFAF29'],
-            backgroundPrimary: ['#111319'],
-            backgroundSecondary: ['#191C26'],
-            sidebarBackground: ['#080A12'],
-            mutedText: ['#A9AFC3'],
-            text: ['#C1C2C5'],
-            error: ['#FA5252'],
+            accent: ["#FFAF29"],
+            backgroundPrimary: ["#111319"],
+            backgroundSecondary: ["#191C26"],
+            sidebarBackground: ["#080A12"],
+            mutedText: ["#A9AFC3"],
+            text: ["#C1C2C5"],
+            error: ["#FA5252"],
           },
           headings: {
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 'bold',
+            fontFamily: "Poppins, sans-serif",
+            fontWeight: "bold",
             sizes: {
               h1: {
                 fontSize: 80,
